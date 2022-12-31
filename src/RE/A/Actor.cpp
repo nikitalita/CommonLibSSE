@@ -666,21 +666,21 @@ namespace RE
 	bool Actor::IsLimbGone(std::uint32_t a_limb)
 	{
 		using func_t = decltype(&Actor::IsLimbGone);
-		REL::Relocation<func_t> func{ RELOCATION_ID(19338, 19765) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(19338, 19765) }; // points to Character's function
 		return func(this, a_limb);
 	}
 
 	bool Actor::IsInMidair() const
 	{
 		using func_t = decltype(&Actor::IsInMidair);
-		REL::Relocation<func_t> func{ RELOCATION_ID(36259, 37243) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36259, 37243) };  // This points to PlayerCharacter's function?
 		return func(this);
 	}
 
 	bool Actor::IsInRagdollState() const
 	{
 		using func_t = decltype(&Actor::IsInRagdollState);
-		REL::Relocation<func_t> func{ RELOCATION_ID(36492, 37491) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36492, 37491) };  // points to character's function?
 		return func(this);
 	}
 

@@ -137,45 +137,45 @@ namespace RE
 		virtual void                               FinishLoadGame(BGSLoadFormBuffer* a_buf);                                                                                                        // 11 - { return; }
 		virtual void                               Revert(BGSLoadFormBuffer* a_buf);                                                                                                                // 12 - { return; }
 		virtual void                               InitItemImpl();                                                                                                                                  // 13 - { return; }
-		[[nodiscard]] virtual TESFile*             GetDescriptionOwnerFile() const;                                                                                                                 // 14 - returns the file that last modified this form
-		[[nodiscard]] virtual FormType             GetSavedFormType() const;                                                                                                                        // 15 - { return formType; }
-		virtual void                               GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen);                                                                                      // 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", g_formStrings[3 * formID], "", formID); }
-		[[nodiscard]] virtual bool                 GetKnown() const;                                                                                                                                // 17 - { return (flags >> 6 ) & 1; }
-		[[nodiscard]] virtual bool                 GetRandomAnim() const;                                                                                                                           // 18 - { return (flags >> 16) & 1; }
-		[[nodiscard]] virtual bool                 GetPlayable() const;                                                                                                                             // 19 - { return (flags >> 2) & 1; }
-		[[nodiscard]] virtual bool                 IsHeadingMarker() const;                                                                                                                         // 1A - { return false; }
-		[[nodiscard]] virtual bool                 GetDangerous() const;                                                                                                                            // 1B - { return (flags >> 17) & 1; }
-		[[nodiscard]] virtual bool                 QHasCurrents() const;                                                                                                                            // 1C - { return (flags >> 19) & 1; }
-		[[nodiscard]] virtual bool                 GetObstacle() const;                                                                                                                             // 1D - { return (flags >> 25) & 1; }
-		[[nodiscard]] virtual bool                 QIsLODLandObject() const;                                                                                                                        // 1E - { return false; }
-		[[nodiscard]] virtual bool                 GetOnLocalMap() const;                                                                                                                           // 1F - { return (flags >> 9) & 1; }
-		[[nodiscard]] virtual bool                 GetMustUpdate() const;                                                                                                                           // 20 - { return (flags >> 8) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual TESFile* GetDescriptionOwnerFile() const;                                                                                                                 // 14 - returns the file that last modified this form
+		[[gnu::pure]] [[nodiscard]] virtual FormType GetSavedFormType() const;                                                                                                                        // 15 - { return formType; }
+		[[gnu::pure]] virtual void                   GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen);                                                                                      // 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", g_formStrings[3 * formID], "", formID); }
+		[[gnu::pure]] [[nodiscard]] virtual bool     GetKnown() const;                                                                                                                                // 17 - { return (flags >> 6 ) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     GetRandomAnim() const;                                                                                                                           // 18 - { return (flags >> 16) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     GetPlayable() const;                                                                                                                             // 19 - { return (flags >> 2) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     IsHeadingMarker() const;                                                                                                                         // 1A - { return false; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     GetDangerous() const;                                                                                                                            // 1B - { return (flags >> 17) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     QHasCurrents() const;                                                                                                                            // 1C - { return (flags >> 19) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     GetObstacle() const;                                                                                                                             // 1D - { return (flags >> 25) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     QIsLODLandObject() const;                                                                                                                        // 1E - { return false; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     GetOnLocalMap() const;                                                                                                                           // 1F - { return (flags >> 9) & 1; }
+		[[gnu::pure]] [[nodiscard]] virtual bool     GetMustUpdate() const;                                                                                                                           // 20 - { return (flags >> 8) & 1; }
 		virtual void                               SetOnLocalMap(bool a_set);                                                                                                                       // 21 - { if (a_set) flags &= 0xFFFFFDFF; else flags |= 0x200; }
-		[[nodiscard]] virtual bool                 GetIgnoredBySandbox() const;                                                                                                                     // 22 - { return false; }
+		[[gnu::pure]] [[nodiscard]] virtual bool                 GetIgnoredBySandbox() const;                                                                                                                     // 22 - { return false; }
 		virtual void                               SetDelete(bool a_set);                                                                                                                           // 23 - { bool result = (flags >> 5) & 1; if (result != a_set) { if (a_set) flags |= 0x20; else flags &= 0xFFFFFFDF; AddChange(1); return result; }
 		virtual void                               SetAltered(bool a_set);                                                                                                                          // 24
 		virtual void                               SaveObjectBound();                                                                                                                               // 25 - { return; }
 		virtual void                               LoadObjectBound(TESFile* a_mod);                                                                                                                 // 26 - { return; }
-		[[nodiscard]] virtual bool                 IsBoundObject() const;                                                                                                                           // 27 - { return false; }
-		[[nodiscard]] virtual bool                 IsObject() const;                                                                                                                                // 28 - { return false; }
-		[[nodiscard]] virtual bool                 IsMagicItem() const;                                                                                                                             // 29 - { return false; }
-		[[nodiscard]] virtual bool                 IsWater() const;                                                                                                                                 // 2A - { return false; }
+		[[gnu::pure]] [[nodiscard]] virtual bool   IsBoundObject() const;                                                                                                                           // 27 - { return false; }
+		[[gnu::pure]] [[nodiscard]] virtual bool   IsObject() const;                                                                                                                                // 28 - { return false; }
+		[[gnu::pure]] [[nodiscard]] virtual bool   IsMagicItem() const;                                                                                                                             // 29 - { return false; }
+		[[gnu::pure]] [[nodiscard]] virtual bool   IsWater() const;                                                                                                                                 // 2A - { return false; }
 		virtual TESObjectREFR*                     AsReference1();                                                                                                                                  // 2B - { return 0; }
 		[[nodiscard]] virtual const TESObjectREFR* AsReference2() const;                                                                                                                            // 2C - { return 0; }
-		[[nodiscard]] virtual std::uint32_t        GetRefCount() const;                                                                                                                             // 2D - { return 0; }
-		[[nodiscard]] virtual const char*          GetTextForParsedSubTag(const BSFixedString& a_tag) const;                                                                                        // 2E
+		[[gnu::pure]] [[nodiscard]] virtual std::uint32_t        GetRefCount() const;                                                                                                                             // 2D - { return 0; }
+		[[gnu::pure]] [[nodiscard]] virtual const char*          GetTextForParsedSubTag(const BSFixedString& a_tag) const;                                                                                        // 2E
 		virtual void                               Copy(TESForm* a_srcForm);                                                                                                                        // 2F - { return; }
-		virtual bool                               BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly);                                                                      // 30
+		[[gnu::pure]] virtual bool                               BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly);                                                                      // 30
 		virtual void                               CreateGroupData(FORM* a_form, FORM_GROUP* a_group);                                                                                              // 31
-		[[nodiscard]] virtual const char*          GetFormEditorID() const;                                                                                                                         // 32 - { return ""; }
+		[[gnu::pure]] [[nodiscard]] virtual const char*          GetFormEditorID() const;                                                                                                                         // 32 - { return ""; }
 		virtual bool                               SetFormEditorID(const char* a_str);                                                                                                              // 33 - { return true; }
-		virtual bool                               IsParentForm();                                                                                                                                  // 34 - { return false; }
-		virtual bool                               IsParentFormTree();                                                                                                                              // 35 - { return false; }
-		virtual bool                               IsFormTypeChild(FormType a_type);                                                                                                                // 36 - { return false; }
+		[[gnu::pure]] virtual bool                               IsParentForm();                                                                                                                                  // 34 - { return false; }
+		[[gnu::pure]] virtual bool                               IsParentFormTree();                                                                                                                              // 35 - { return false; }
+		[[gnu::pure]] virtual bool                               IsFormTypeChild(FormType a_type);                                                                                                                // 36 - { return false; }
 		virtual bool                               Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount);  // 37 - { return false; }
 		virtual void                               SetFormID(FormID a_id, bool a_updateFile);                                                                                                       // 38
-		[[nodiscard]] virtual const char*          GetObjectTypeName() const;                                                                                                                       // 39 - { return ""; }
-		[[nodiscard]] virtual bool                 QAvailableInGame() const;                                                                                                                        // 3A - { return true; }
+		[[gnu::pure]] [[nodiscard]] virtual const char*          GetObjectTypeName() const;                                                                                                                       // 39 - { return ""; }
+		[[gnu::pure]] [[nodiscard]] virtual bool                 QAvailableInGame() const;                                                                                                                        // 3A - { return true; }
 
 		static void AddCompileIndex(FormID& a_id, TESFile* a_file)
 		{
@@ -281,10 +281,10 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] std::uint32_t GetFormFlags() const noexcept { return formFlags; }
-		[[nodiscard]] FormID        GetFormID() const noexcept { return formID; }
-		[[nodiscard]] FormType      GetFormType() const noexcept { return *formType; }
-		[[nodiscard]] std::int32_t  GetGoldValue() const;
+		[[gnu::pure]] [[nodiscard]] std::uint32_t GetFormFlags() const noexcept { return formFlags; }
+		[[gnu::pure]] [[nodiscard]] FormID        GetFormID() const noexcept { return formID; }
+		[[gnu::pure]] [[nodiscard]] FormType      GetFormType() const noexcept { return *formType; }
+		[[nodiscard]] std::int32_t  GetGoldValue() const; // non-pure, possible extraData init
 
 		[[nodiscard]] FormID GetRawFormID() const;
 		[[nodiscard]] FormID GetLocalFormID() const
@@ -297,15 +297,15 @@ namespace RE
 			return formID & ~fileIndex;
 		}
 
-		[[nodiscard]] const char* GetName() const;
-		[[nodiscard]] float       GetWeight() const;
-		[[nodiscard]] bool        HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
-		[[nodiscard]] bool        HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const;
-		[[nodiscard]] bool        HasVMAD() const;
-		[[nodiscard]] bool        HasWorldModel() const noexcept;
+		[[gnu::pure]] [[nodiscard]] const char* GetName() const;
+		[[nodiscard]] float       GetWeight() const; // non-pure, ObjectManager lock
+		[[gnu::pure]] [[nodiscard]] bool        HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
+		[[gnu::pure]] [[nodiscard]] bool        HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const;
+		[[nodiscard]] bool        HasVMAD() const; // non-pure, vm handle lookup
+		[[gnu::pure]] [[nodiscard]] bool        HasWorldModel() const noexcept;
 		void                      InitItem() { InitItemImpl(); }
 
-		[[nodiscard]] bool Is(FormType a_type) const noexcept { return GetFormType() == a_type; }
+		[[gnu::pure]] [[nodiscard]] bool Is(FormType a_type) const noexcept { return GetFormType() == a_type; }
 
 		template <class... Args>
 		[[nodiscard]] bool Is(Args... a_args) const noexcept  //
@@ -314,19 +314,19 @@ namespace RE
 			return (Is(a_args) || ...);
 		}
 
-		[[nodiscard]] bool IsAmmo() const noexcept { return Is(FormType::Ammo); }
-		[[nodiscard]] bool IsArmor() const noexcept { return Is(FormType::Armor); }
-		[[nodiscard]] bool IsBook() const noexcept { return Is(FormType::Book); }
-		[[nodiscard]] bool IsDeleted() const noexcept { return (GetFormFlags() & RecordFlags::kDeleted) != 0; }
-		[[nodiscard]] bool IsDynamicForm() const noexcept { return GetFormID() >= 0xFF000000; }
-		[[nodiscard]] bool IsGold() const noexcept { return GetFormID() == 0x0000000F; }
-		[[nodiscard]] bool IsIgnored() const noexcept { return (GetFormFlags() & RecordFlags::kIgnored) != 0; }
-		[[nodiscard]] bool IsInventoryObject() const;
-		[[nodiscard]] bool IsInitialized() const noexcept { return (GetFormFlags() & RecordFlags::kInitialized) != 0; }
-		[[nodiscard]] bool IsKey() const noexcept { return Is(FormType::KeyMaster); }
-		[[nodiscard]] bool IsLockpick() const noexcept { return GetFormID() == 0x0000000A; }
+		[[gnu::pure]] [[nodiscard]] bool IsAmmo() const noexcept { return Is(FormType::Ammo); }
+		[[gnu::pure]] [[nodiscard]] bool IsArmor() const noexcept { return Is(FormType::Armor); }
+		[[gnu::pure]] [[nodiscard]] bool IsBook() const noexcept { return Is(FormType::Book); }
+		[[gnu::pure]] [[nodiscard]] bool IsDeleted() const noexcept { return (GetFormFlags() & RecordFlags::kDeleted) != 0; }
+		[[gnu::pure]] [[nodiscard]] bool IsDynamicForm() const noexcept { return GetFormID() >= 0xFF000000; }
+		[[gnu::pure]] [[nodiscard]] bool IsGold() const noexcept { return GetFormID() == 0x0000000F; }
+		[[gnu::pure]] [[nodiscard]] bool IsIgnored() const noexcept { return (GetFormFlags() & RecordFlags::kIgnored) != 0; }
+		[[gnu::pure]] [[nodiscard]] bool IsInventoryObject() const;
+		[[gnu::pure]] [[nodiscard]] bool IsInitialized() const noexcept { return (GetFormFlags() & RecordFlags::kInitialized) != 0; }
+		[[gnu::pure]] [[nodiscard]] bool IsKey() const noexcept { return Is(FormType::KeyMaster); }
+		[[gnu::pure]] [[nodiscard]] bool IsLockpick() const noexcept { return GetFormID() == 0x0000000A; }
 
-		[[nodiscard]] bool IsNot(FormType a_type) const noexcept { return !Is(a_type); }
+		[[gnu::pure]] [[nodiscard]] bool IsNot(FormType a_type) const noexcept { return !Is(a_type); }
 
 		template <class... Args>
 		[[nodiscard]] bool IsNot(Args... a_args) const noexcept  //
@@ -335,11 +335,11 @@ namespace RE
 			return (IsNot(a_args) && ...);
 		}
 
-		[[nodiscard]] bool IsNote() const noexcept { return Is(FormType::Note); }
-		[[nodiscard]] bool IsPlayer() const noexcept { return GetFormID() == 0x00000007; }
-		[[nodiscard]] bool IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
-		[[nodiscard]] bool IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
-		[[nodiscard]] bool IsWeapon() const noexcept { return Is(FormType::Weapon); }
+		[[gnu::pure]] [[nodiscard]] bool IsNote() const noexcept { return Is(FormType::Note); }
+		[[gnu::pure]] [[nodiscard]] bool IsPlayer() const noexcept { return GetFormID() == 0x00000007; }
+		[[gnu::pure]] [[nodiscard]] bool IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
+		[[gnu::pure]] [[nodiscard]] bool IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
+		[[gnu::pure]] [[nodiscard]] bool IsWeapon() const noexcept { return Is(FormType::Weapon); }
 
 		// members
 		TESFileContainer                                sourceFiles;      // 08
