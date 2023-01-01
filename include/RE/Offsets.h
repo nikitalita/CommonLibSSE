@@ -494,4 +494,5 @@ namespace RE::Offset
 	constexpr auto LookupReferenceByHandle = RELOCATION_ID(12204, 12332);
 	constexpr auto PlaySound = RELOCATION_ID(52054, 52939);
 	constexpr auto TlsIndex = RELOCATION_ID(528600, 415542);
+	constexpr auto GlobalStateCounter = RELOCATION_ID(514157, 400305);
 }

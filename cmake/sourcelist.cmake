@@ -1379,6 +1379,7 @@ set(SOURCES
 	include/RE/T/TESWeightForm.h
 	include/RE/T/TESWordOfPower.h
 	include/RE/T/TESWorldSpace.h
+	include/RE/T/TLSData.h
 	include/RE/T/TargetValueModifierEffect.h
 	include/RE/T/TaskQueueInterface.h
 	include/RE/T/TempEffectTraits.h
@@ -1541,7 +1542,7 @@ set(SOURCES
 	src/RE/E/ExtraSoul.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
-    src/RE/F/FormTypes.cpp
+	src/RE/F/FormTypes.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
 	src/RE/G/GAtomic.cpp
