@@ -24,7 +24,7 @@ namespace RE
 	bool BaseExtraList::PresenceBitfield::HasType(std::uint32_t a_type) const
 	{
 		const std::uint32_t index = (a_type >> 3);
-		if (index >= 0x18) { // in IDA, both 1.5.97 and 1.6.640, this is checking >= 0x17???
+		if (index >= 0x17) {
 			return false;
 		}
 		const std::uint8_t bitMask = 1 << (a_type % 8);
