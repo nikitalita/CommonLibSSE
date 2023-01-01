@@ -16,6 +16,7 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESObjectREFR.h"
+#include "RE/T/TLSData.h"
 #include "SKSE/Version.h"
 
 namespace RE
@@ -23,7 +24,7 @@ namespace RE
 	bool BaseExtraList::PresenceBitfield::HasType(std::uint32_t a_type) const
 	{
 		const std::uint32_t index = (a_type >> 3);
-		if (index >= 0x18) {
+		if (index >= 0x18) { // in IDA, both 1.5.97 and 1.6.640, this is checking >= 0x17???
 			return false;
 		}
 		const std::uint8_t bitMask = 1 << (a_type % 8);
@@ -74,6 +75,7 @@ namespace RE
 
 	bool ExtraDataList::HasType(ExtraDataType a_type) const
 	{
+		// Extra lock doesn't matter here if called by GetType() because we're on the same thread
 		BSReadLockGuard locker(GetLock());
 		return _extraData.GetPresence() != nullptr && _extraData.GetPresence()->HasType(static_cast<std::uint32_t>(a_type));
 	}
@@ -293,6 +295,7 @@ namespace RE
 
 	BSExtraData* ExtraDataList::GetByTypeImpl(ExtraDataType a_type) const
 	{
+		// The real GetByType() (below) updates the thread-local ExtraData cache, this does not
 		BSReadLockGuard locker(GetLock());
 
 		if (!HasType(a_type)) {
@@ -306,6 +309,54 @@ namespace RE
 		}
 
 		return nullptr;
+	}
+	
+	// This is really just for reference, we don't want to call this because it pollutes the TLS cache
+	BSExtraData* ExtraDataList::GetByTypeImplCache(ExtraDataType a_type)
+	{
+		BSExtraData* extraData = nullptr;
+		BSReadLockGuard locker(GetLock());
+		if (!HasType(a_type)) {
+			return nullptr;
+		}
+		REL::Relocation<std::uint32_t*> tlsIndex{ Offset::TlsIndex };
+		auto tlsDataArray = reinterpret_cast<TLSData**>(__readgsqword(0x58));
+		TLSData * tlsData =  tlsDataArray[*tlsIndex];
+		if (tlsData->cachedExtraDataList == this)
+		{
+			REL::Relocation<std::uint32_t*> globalStateCounterPtr{ Offset::GlobalStateCounter };
+			std::uint32_t globalStateCounter = *globalStateCounterPtr;
+			if (tlsData->stateCounter != globalStateCounter) {
+				tlsData->cachedExtraDataList = nullptr;
+				std::memset(tlsData->cachedExtraData, 0, sizeof(tlsData->cachedExtraData));
+				tlsData->stateCounter = globalStateCounter;
+			}
+			if (static_cast<std::uint32_t>(a_type) < TLSData::CACHED_EXTRA_DATA_SIZE) {
+				extraData = tlsData->cachedExtraData[static_cast<std::uint32_t>(a_type)];
+			}
+		}
+
+		if (extraData) {
+			return extraData;
+		}
+
+		for (auto iter = _extraData.GetData(); iter; iter = iter->next) {
+			if (iter->GetType() == a_type) {
+				extraData = iter;
+				break;
+			}
+		}
+		if (!extraData){
+			return nullptr;
+		}
+		if (tlsData->cachedExtraDataList != this) {
+				std::memset(tlsData->cachedExtraData, 0, sizeof(tlsData->cachedExtraData));
+				tlsData->cachedExtraDataList = this;
+		}
+		if (static_cast<std::uint32_t>(a_type) < TLSData::CACHED_EXTRA_DATA_SIZE) {
+			tlsData->cachedExtraData[static_cast<std::uint32_t>(a_type)] = extraData;
+		}
+		return extraData;
 	}
 
 	void ExtraDataList::MarkType(std::uint32_t a_type, bool a_cleared)

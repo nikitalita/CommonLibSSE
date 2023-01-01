@@ -193,6 +193,7 @@ namespace RE
 
 	private:
 		[[nodiscard]] BSExtraData* GetByTypeImpl(ExtraDataType a_type) const;
+		[[nodiscard]] BSExtraData* GetByTypeImplCache(ExtraDataType a_type);
 		void         MarkType(std::uint32_t a_type, bool a_cleared);
 		void         MarkType(ExtraDataType a_type, bool a_cleared);
 		[[nodiscard]] BSReadWriteLock& GetLock() const noexcept;
