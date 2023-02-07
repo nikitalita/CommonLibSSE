@@ -442,6 +442,7 @@ namespace RE::Offset
 		constexpr auto GetBaseOverlays = RELOCATION_ID(24275, 24791);
 		constexpr auto GetNumBaseOverlays = RELOCATION_ID(24276, 24792);
 		constexpr auto HasOverlays = RELOCATION_ID(24274, 24790);
+		constexpr auto RemoveOutfitItems = RELOCATION_ID(19264, 16040);
 		constexpr auto SetSkinFromTint = RELOCATION_ID(24206, 24710);
 		constexpr auto UpdateNeck = RELOCATION_ID(24207, 24711);
 	}
@@ -453,6 +454,8 @@ namespace RE::Offset
 		constexpr auto GetOwner = RELOCATION_ID(19789, 20194);
 		constexpr auto GetStealValue = RELOCATION_ID(15807, 16045);
 		constexpr auto FindReferenceFor3D = RELOCATION_ID(19323, 19750);
+		constexpr auto HasQuestObject = RELOCATION_ID(19201, 19627);
+		constexpr auto InitChildActivates = RELOCATION_ID(19857, 20264);
 		constexpr auto InitInventoryIfRequired = RELOCATION_ID(15800, 16038);
 		constexpr auto MoveTo = RELOCATION_ID(56227, 56626);
 		constexpr auto PlayAnimation = RELOCATION_ID(14189, 14297);

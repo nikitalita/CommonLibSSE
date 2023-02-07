@@ -240,6 +240,16 @@ namespace RE
 		}
 	}
 
+	bool TESNPC::SetDefaultOutfit(BGSOutfit * a_outfit) {
+		defaultOutfit = a_outfit;
+		return AddChange(ChangeFlags::kDefaultOutfit);
+	}
+
+	bool TESNPC::SetSleepOutfit(BGSOutfit * a_outfit) {
+		sleepOutfit = a_outfit;
+		return AddChange(ChangeFlags::kSleepOutfit);
+	}
+
 	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint)
 	{
 		using func_t = decltype(&TESNPC::SetSkinFromTint);

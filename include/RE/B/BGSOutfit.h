@@ -38,7 +38,10 @@ namespace RE
 				}
 			}
 		}
-
+		// TODO: VERIFY
+		std::uint16_t GetLevel() {
+			return static_cast<std::uint16_t>(formFlags);
+		}
 		// members
 		BSTArray<TESForm*> outfitItems;  // 20 - INAM
 	};

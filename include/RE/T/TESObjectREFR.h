@@ -217,7 +217,7 @@ namespace RE
 		void                 FinishLoadGame(BGSLoadFormBuffer* a_buf) override;                                    // 11
 		void                 Revert(BGSLoadFormBuffer* a_buf) override;                                            // 12
 		void                 InitItemImpl() override;                                                              // 13
-		[[gnu::pure]] FormType             GetSavedFormType() const override;                                                    // 15
+		[[gnu::pure]] FormType GetSavedFormType() const override;                                                  // 15
 		void                 GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;                  // 16 - non-pure, possible extraData init
 		[[gnu::pure]] bool   GetRandomAnim() const override;                                                       // 18 - { return data.objectReference->GetRandomAnim(); }
 		[[gnu::pure]] bool   IsHeadingMarker() const override;                                                     // 1A - { return data.objectReference->formType == FormType::Light ? (flags & RecordFlags::kNeverFades) != 0 : false; }
@@ -437,8 +437,8 @@ namespace RE
 		[[nodiscard]] bool                              IsLocked() const;
 		[[nodiscard]] bool                              IsMarkedForDeletion() const;
 		[[nodiscard]] bool                              IsOffLimits();
-        [[nodiscard]] float                             IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const;
-        [[nodiscard]] bool                              IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel) const;
+    [[nodiscard]] float                             IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const;
+    [[nodiscard]] bool                              IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel) const;
 		void                                            MoveTo(TESObjectREFR* a_target);
 		bool                                            MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                            MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
@@ -452,6 +452,13 @@ namespace RE
 		bool                                            SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
 		void                                            SetPosition(float a_x, float a_y, float a_z);
 		void                                            SetPosition(NiPoint3 a_pos);
+
+		[[gnu::pure]] [[nodiscard]] InventoryItemMap    GetInventoryNoInit();
+		[[gnu::pure]] [[nodiscard]] InventoryItemMap    GetInventoryNoInit(std::function<bool(TESBoundObject&)> a_filter);
+		[[gnu::pure]] [[nodiscard]] std::int32_t        GetInventoryCountNoInit();
+		[[gnu::pure]] [[nodiscard]] InventoryCountMap   GetInventoryCountsNoInit();
+		[[gnu::pure]] [[nodiscard]] InventoryCountMap   GetInventoryCountsNoInit(std::function<bool(TESBoundObject&)> a_filter);
+		[[gnu::pure]] [[nodiscard]] InventoryChanges*   GetInventoryChangesNoInit();
 
 		struct REFERENCE_RUNTIME_DATA
 		{
@@ -484,8 +491,12 @@ namespace RE
 #ifndef ENABLE_SKYRIM_AE
 		RUNTIME_DATA_CONTENT
 #endif
-
-	private:
+	protected:
+		[[nodiscard]] std::int32_t                      GetInventoryCountImpl(bool no_init = false);
+		[[nodiscard]] InventoryItemMap                  GetInventoryImpl(std::function<bool(TESBoundObject&)> a_filter, bool no_init = false);
+		[[nodiscard]] InventoryCountMap                 GetInventoryCountsImpl(std::function<bool(TESBoundObject&)> a_filter, bool no_init = false);
+		[[nodiscard]] InventoryChanges*                 GetInventoryChangesImpl(bool no_init = false);
+		bool                                            InitInventoryIfRequiredImpl(bool a_ignoreContainerExtraData = false);
 		InventoryChanges* ForceInitInventoryChanges();
 		InventoryChanges* MakeInventoryChanges();
 		void              MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation);

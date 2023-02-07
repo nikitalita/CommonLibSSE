@@ -330,7 +330,7 @@ namespace RE
 		[[gnu::pure]] [[nodiscard]] bool     IsDead(bool a_notEssential = true) const override;                                             // 099
 		bool                   ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime) override;  // 09C
 		bool                   ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity) override;                      // 09D
-		[[gnu::pure]] [[nodiscard]] TESAmmo* [[gnu::pure]] () const override;                                                               // 09E
+		[[gnu::pure]] [[nodiscard]] TESAmmo* GetCurrentAmmo() const override;                                                               // 09E
 		void                   UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                          // 0A1
 #endif
 
@@ -590,7 +590,7 @@ namespace RE
 		void                                    VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
 		bool                                    VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
 		bool                                    WouldBeStealing(const TESObjectREFR* a_target) const; // non-pure, possible extraData initialization
-
+	
 		struct ACTOR_RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT \

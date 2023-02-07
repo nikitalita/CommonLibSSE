@@ -10,6 +10,7 @@
 
 namespace RE
 {
+	class BGSKeywordForm;
 	class BGSLoadFormBuffer;
 	class BGSSaveFormBuffer;
 	class TESBoundObject;
@@ -296,7 +297,7 @@ namespace RE
 
 			return formID & ~fileIndex;
 		}
-
+		
 		[[gnu::pure]] [[nodiscard]] const char* GetName() const;
 		[[nodiscard]] float       GetWeight() const; // non-pure, ObjectManager lock
 		[[gnu::pure]] [[nodiscard]] bool        HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;

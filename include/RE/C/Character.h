@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/A/Actor.h"
+#include "RE/B/BGSOutfit.h"
 
 namespace RE
 {
@@ -55,6 +56,8 @@ namespace RE
 		// add
 		SKYRIM_REL_VR_VIRTUAL void Unk_128(void);  // 128
 		SKYRIM_REL_VR_VIRTUAL void Unk_129(void);  // 129 - { return 1; }
+
+		TESObjectREFR * RemoveOutfitItems([[maybe_unused]]BGSOutfit * a_outfit);
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(Character) == 0x2B0);

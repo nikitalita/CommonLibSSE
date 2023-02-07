@@ -256,6 +256,8 @@ namespace RE
 		bool                         RemovePerk(BGSPerk* a_perk);
 		void                         SetFaceTexture(BGSTextureSet* a_textureSet);
 		void                         SetHairColor(BGSColorForm* a_hairColor);
+		bool												 SetDefaultOutfit(BGSOutfit * a_outfit);
+		bool												 SetSleepOutfit(BGSOutfit * a_outfit);
 		void                         SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint);
 		void                         UpdateNeck(BSFaceGenNiNode* a_faceNode);
 
