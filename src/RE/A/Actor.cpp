@@ -337,9 +337,20 @@ namespace RE
 
 	std::int32_t Actor::GetGoldAmount()
 	{
-		const auto inv = GetInventory([](TESBoundObject& a_object) -> bool {
+		return GetGoldAmountImpl(false);
+	}
+
+	std::int32_t Actor::GetGoldAmountNoInit()
+	{
+		return GetGoldAmountImpl(true);
+	}
+
+	std::int32_t Actor::GetGoldAmountImpl(bool noinit)
+	{
+		auto lambda = [](TESBoundObject& a_object) -> bool {
 			return a_object.IsGold();
-		});
+		};
+		const auto inv = noinit ? GetInventoryNoInit(lambda) : GetInventory(lambda);
 
 		const auto dobj = BGSDefaultObjectManager::GetSingleton();
 		if (!dobj) {
@@ -452,7 +463,16 @@ namespace RE
 
 	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
 	{
-		if (const auto worn = GetWornArmor(a_slot); worn) {
+		return GetSkinArmorImpl(a_slot, false);
+	}
+
+	TESObjectARMO* Actor::GetSkinArmorNoInit(BGSBipedObjectForm::BipedObjectSlot a_slot) {
+		return GetSkinArmorImpl(a_slot, true);
+	}
+
+	TESObjectARMO* Actor::GetSkinArmorImpl(BGSBipedObjectForm::BipedObjectSlot a_slot, bool noinit)
+	{
+		if (const auto worn = GetWornArmorImpl(a_slot, noinit); worn) {
 			return worn;
 		}
 		return GetSkin();
@@ -490,9 +510,20 @@ namespace RE
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
 	{
-		const auto inv = GetInventory([](TESBoundObject& a_object) {
+		return GetWornArmorImpl(a_slot, false);
+	}
+
+	TESObjectARMO* Actor::GetWornArmorNoInit(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	{
+		return GetWornArmorImpl(a_slot, true);
+	}
+
+	TESObjectARMO* Actor::GetWornArmorImpl(BGSBipedObjectForm::BipedObjectSlot a_slot, bool noinit)
+	{
+		auto lambda = [](TESBoundObject& a_object) {
 			return a_object.IsArmor();
-		});
+		};
+		const auto inv = noinit ? GetInventoryNoInit(lambda) : GetInventory(lambda);
 
 		for (const auto& [item, invData] : inv) {
 			const auto& [count, entry] = invData;
@@ -509,9 +540,20 @@ namespace RE
 
 	TESObjectARMO* Actor::GetWornArmor(FormID a_formID)
 	{
-		const auto inv = GetInventory([=](TESBoundObject& a_object) {
-			return a_object.IsArmor() && a_object.GetFormID() == a_formID;
-		});
+		return GetWornArmorImpl(a_formID, false);
+	}
+
+	TESObjectARMO* Actor::GetWornArmorNoInit(FormID a_formID)
+	{
+		return GetWornArmorImpl(a_formID, true);
+	}
+
+	TESObjectARMO* Actor::GetWornArmorImpl(FormID a_formID, bool noinit)
+	{
+		auto lambda = [=](TESBoundObject& a_object) {
+            return a_object.IsArmor() && a_object.GetFormID() == a_formID;
+		};
+		const auto inv = noinit ? GetInventoryNoInit(lambda) : GetInventory(lambda);
 
 		for (const auto& [item, invData] : inv) {
 			const auto& [count, entry] = invData;

@@ -594,6 +594,11 @@ namespace RE
 		void                         VisitSpells(ForEachSpellVisitor& a_visitor);
 		bool                         WouldBeStealing(const TESObjectREFR* a_target) const;
 
+		std::int32_t                 GetGoldAmountNoInit();
+		[[nodiscard]] TESObjectARMO* GetWornArmorNoInit(BGSBipedObjectForm::BipedObjectSlot a_slot);
+		[[nodiscard]] TESObjectARMO* GetWornArmorNoInit(FormID a_formID);
+		[[nodiscard]] TESObjectARMO* GetSkinArmorNoInit(BGSBipedObjectForm::BipedObjectSlot a_slot);
+
 		// members
 		stl::enumeration<BOOL_BITS, std::uint32_t>            boolBits;                           // 0E0
 		float                                                 updateTargetTimer;                  // 0E4
@@ -661,6 +666,12 @@ namespace RE
 		float       CalcEquippedWeight();
 		TESFaction* GetCrimeFactionImpl() const;
 		void        RemoveOutfitItems(BGSOutfit* a_outfit);
+
+
+		std::int32_t GetGoldAmountImpl(bool noinit);
+		[[nodiscard]] TESObjectARMO* GetSkinArmorImpl(BGSBipedObjectForm::BipedObjectSlot a_slot, bool noinit);
+		[[nodiscard]] TESObjectARMO* GetWornArmorImpl(BGSBipedObjectForm::BipedObjectSlot a_slot, bool noinit);
+		[[nodiscard]] TESObjectARMO* GetWornArmorImpl(FormID a_formID, bool noinit);
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Actor) == 0x2B0);
