@@ -298,15 +298,21 @@ namespace RE
 	auto TESObjectREFR::GetInventory()
 		-> InventoryItemMap
 	{
-		return GetInventory([](TESBoundObject&) { return true; });
+		return GetInventoryImpl([](TESBoundObject&) { return true; }, false);
 	}
 
 	auto TESObjectREFR::GetInventory(std::function<bool(TESBoundObject&)> a_filter)
 		-> InventoryItemMap
 	{
+		return GetInventoryImpl(a_filter, false);
+	}
+
+	auto TESObjectREFR::GetInventoryImpl(std::function<bool(TESBoundObject&)> a_filter, bool no_init)
+		-> InventoryItemMap
+	{
 		InventoryItemMap results;
 
-		auto invChanges = GetInventoryChanges();
+		auto invChanges = GetInventoryChangesImpl(no_init);
 		if (invChanges && invChanges->entryList) {
 			for (auto& entry : *invChanges->entryList) {
 				if (entry && entry->object && a_filter(*entry->object)) {
@@ -357,7 +363,12 @@ namespace RE
 
 	std::int32_t TESObjectREFR::GetInventoryCount()
 	{
-		auto         counts = GetInventoryCounts();
+		return GetInventoryCountImpl(false);
+	}
+
+	std::int32_t TESObjectREFR::GetInventoryCountImpl(bool no_init)
+	{
+		auto         counts = GetInventoryCountsImpl([](TESBoundObject&) { return true; }, no_init);
 		std::int32_t total = 0;
 		for (auto& elem : counts) {
 			total += elem.second;
@@ -368,13 +379,19 @@ namespace RE
 	auto TESObjectREFR::GetInventoryCounts()
 		-> InventoryCountMap
 	{
-		return GetInventoryCounts([](TESBoundObject&) { return true; });
+		return GetInventoryCountsImpl([](TESBoundObject&) { return true; }, false);
 	}
 
 	auto TESObjectREFR::GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter)
 		-> InventoryCountMap
 	{
-		auto              itemMap = GetInventory(std::move(a_filter));
+		return GetInventoryCountsImpl(a_filter, false);
+	}
+
+	auto TESObjectREFR::GetInventoryCountsImpl(std::function<bool(TESBoundObject&)> a_filter, bool no_init)
+		-> InventoryCountMap
+	{
+		auto              itemMap = GetInventoryImpl(std::move(a_filter), no_init);
 		InventoryCountMap results;
 		for (const auto& [key, value] : itemMap) {
 			results[key] = value.first;
@@ -384,7 +401,17 @@ namespace RE
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
+		return GetInventoryChangesImpl(false);
+	}
+
+	// this does not behave like the Game's; the Game's does not attempt to initalize the container.
+	// which is why we have to add "no_init" here if we don't want that to happen.
+	InventoryChanges* TESObjectREFR::GetInventoryChangesImpl(bool no_init)
+	{
 		if (!extraList.HasType<ExtraContainerChanges>()) {
+			if (no_init) {
+				return nullptr;
+			}
 			if (!InitInventoryIfRequired()) {
 				ForceInitInventoryChanges();
 			}
@@ -834,6 +861,40 @@ namespace RE
 	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
 	{
 		MoveTo_Impl(ObjectRefHandle(), GetParentCell(), GetWorldspace(), a_pos, data.angle);
+	}
+
+	auto TESObjectREFR::GetInventoryNoInit()
+		-> InventoryItemMap
+	{
+		return GetInventoryImpl([](TESBoundObject&) { return true; }, true);
+	}
+
+	auto TESObjectREFR::GetInventoryNoInit(std::function<bool(TESBoundObject&)> a_filter)
+		-> InventoryItemMap
+	{
+		return GetInventoryImpl(a_filter, true);
+	}
+
+	std::int32_t TESObjectREFR::GetInventoryCountNoInit()
+	{
+		return GetInventoryCountImpl(true);
+	}
+
+	auto TESObjectREFR::GetInventoryCountsNoInit()
+		-> InventoryCountMap
+	{
+		return GetInventoryCountsImpl([](TESBoundObject&) { return true; }, true);
+	}
+
+	auto TESObjectREFR::GetInventoryCountsNoInit(std::function<bool(TESBoundObject&)> a_filter)
+		-> InventoryCountMap
+	{
+		return GetInventoryCountsImpl(a_filter, true);
+	}
+
+	InventoryChanges* TESObjectREFR::GetInventoryChangesNoInit()
+	{
+		return GetInventoryChangesImpl(true);
 	}
 
 	InventoryChanges* TESObjectREFR::ForceInitInventoryChanges()

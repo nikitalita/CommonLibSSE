@@ -448,6 +448,13 @@ namespace RE
 		void                                    SetPosition(float a_x, float a_y, float a_z);
 		void                                    SetPosition(NiPoint3 a_pos);
 
+		InventoryItemMap                        GetInventoryNoInit();
+		InventoryItemMap                        GetInventoryNoInit(std::function<bool(TESBoundObject&)> a_filter);
+		std::int32_t                            GetInventoryCountNoInit();
+		InventoryCountMap                       GetInventoryCountsNoInit();
+		InventoryCountMap                       GetInventoryCountsNoInit(std::function<bool(TESBoundObject&)> a_filter);
+		InventoryChanges*                       GetInventoryChangesNoInit();
+
 		// members
 		OBJ_REFR         data;          // 40
 		TESObjectCELL*   parentCell;    // 60
@@ -460,6 +467,10 @@ namespace RE
 		std::uint32_t    pad94;         // 94
 
 	private:
+		std::int32_t      GetInventoryCountImpl(bool no_init = false);
+		InventoryItemMap  GetInventoryImpl(std::function<bool(TESBoundObject&)> a_filter, bool no_init = false);
+		InventoryCountMap GetInventoryCountsImpl(std::function<bool(TESBoundObject&)> a_filter, bool no_init = false);
+		InventoryChanges* GetInventoryChangesImpl(bool no_init = false);
 		InventoryChanges* ForceInitInventoryChanges();
 		InventoryChanges* MakeInventoryChanges();
 		void              MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation);
