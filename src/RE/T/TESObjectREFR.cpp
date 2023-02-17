@@ -928,4 +928,76 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::TESObjectREFR::PlayAnimation };
 		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
 	}
+
+	bool TESObjectREFR::InitInventoryIfRequiredImpl(bool a_ignoreContainerExtraData)
+	{
+		// called statically from papyrus??
+		if (!this) {
+			return false;
+		}
+		bool changesInitRequired = false;
+		auto container = GetContainer();
+		RE::InventoryChanges * changes = nullptr;
+
+		if (!container) {
+			return false;
+		}
+
+		container->ForEachContainerObject([&](ContainerObject& a_entry) {
+			if (a_entry.obj && a_entry.obj->GetFormType() == FormType::LeveledItem) {
+				changesInitRequired = true;
+				return BSContainer::ForEachResult::kStop;
+			}
+			return BSContainer::ForEachResult::kContinue;
+		});
+
+		if (GetFormType() == FormType::ActorCharacter && As<Actor>()) {
+			changesInitRequired = true;
+			const auto dobj = BGSDefaultObjectManager::GetSingleton();
+			if (!dobj) {
+				return 0;
+			}
+			const auto keyword = dobj->GetObject<BGSKeyword>(DEFAULT_OBJECT::kKeywordSkipOutfitItems);
+			if (!keyword || !HasKeyword(keyword)) {
+				if (As<Actor>()){
+					// TODO: RemoveOutfitItems is private; maybe change to a friend function?
+					//As<Actor>()->RemoveOutfitItems(nullptr);
+				}
+			}
+			auto cell = parentCell;
+			if (cell){
+				auto cellStateVal = static_cast<uint8_t>(cell->cellState.get());
+				// I do not know what these cell state values are supposed to be, the State enum only has kAttached = 7
+				if (cellStateVal >= 2 && (cellStateVal <= 4 || cellStateVal > 5 && cellStateVal <= 7)){
+					changesInitRequired = true;
+				}
+			}
+		}
+		if (!changesInitRequired) {
+			return false;
+		}
+		// Don't know why this extra container check is here
+		if (GetContainer()) {
+			if (!extraList.HasType(ExtraDataType::kContainerChanges)){
+				changes = MakeInventoryChanges();
+			} else {
+				auto exConChanges = extraList.GetByType<ExtraContainerChanges>();
+				if (!exConChanges)
+				{
+					changes = MakeInventoryChanges();
+				} else {
+					changes = extraList.GetByType<ExtraContainerChanges>()->changes;
+				}
+			}
+		}
+		if (!changes) {
+			return false;
+		}
+		changes->InitLeveledItems();
+		if (!a_ignoreContainerExtraData){
+			changes->InitFromContainerExtra();
+		}
+		changes->InitScripts();
+		return true;
+	}
 }
