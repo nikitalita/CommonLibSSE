@@ -5,6 +5,7 @@
 
 namespace RE
 {
+	class BSLog;
 	namespace SkyrimScript
 	{
 		class Logger : public BSScript::ErrorLogger
@@ -20,7 +21,7 @@ namespace RE
 			// members
 			BSFixedString logName;  // 98
 			BSFixedString logPath;  // A0
-			std::uint64_t unkA8;    // A8
+			BSLog* log;             // A8
 		};
 		static_assert(sizeof(Logger) == 0xB0);
 	}

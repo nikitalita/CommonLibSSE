@@ -255,6 +255,7 @@
 #include "RE/B/BSLightingShaderMaterialParallaxOcc.h"
 #include "RE/B/BSLightingShaderMaterialSnow.h"
 #include "RE/B/BSLightingShaderProperty.h"
+#include "RE/B/BSLog.h"
 #include "RE/B/BSMasterParticleSystem.h"
 #include "RE/B/BSMaterialObject.h"
 #include "RE/B/BSMemStorage.h"
