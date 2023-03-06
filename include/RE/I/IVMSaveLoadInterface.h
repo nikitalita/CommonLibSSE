@@ -56,12 +56,12 @@ namespace RE
 			virtual void                                                              MarkSaveInvalid(BSStorage* a_storage) = 0;                                                                  // 03
 			virtual std::byte                                                         GetSaveGameVersion() = 0;                                                                                   // 04
 			virtual void                                                              CleanupSave() = 0;                                                                                          // 05
-			virtual void                                                              Unk_06(void) = 0;                                                                                           // 06
+			virtual void                                                              CleanupLoad(void) = 0;                                                                                           // 06
 			virtual void                                                              DropAllRunningData() = 0;                                                                                   // 07
-			virtual void                                                              Unk_08(void* unk) = 0;                                                                                      // 08
-			virtual void                                                              Unk_09(void) = 0;                                                                                           // 09
-			virtual void                                                              Unk_0A(VMHandle a_handle, Object** a_out) = 0;                                                              // 0A
-			virtual void                                                              Unk_0B(void* unk) = 0;                                                                                      // 0B
+			virtual void                                                              GetSaveHandleForObject(const Object* a_obj) = 0;                                                                                      // 08
+			virtual void                                                              SetSaveHandleforObject(void) = 0;                                                                                           // 09
+			virtual void                                                              GetObjectBySaveHandle(VMHandle a_handle, BSTSmartPointer<BSScript::Object> a_obj_ptr) = 0;                                                              // 0A
+			virtual void                                                              SetSaveHandleForObject(const Object* a_Object, VMHandle a_handle) = 0;                                                                                      // 0B
 			virtual void                                                              Unk_0C(void) = 0;                                                                                           // 0C
 			virtual void                                                              Unk_0D(VMHandle a_handle, Array** a_out) = 0;                                                               // 0D
 			virtual void                                                              Unk_0E(LoadStorageWrapper* a_storage, void* unk) = 0;                                                       // 0E

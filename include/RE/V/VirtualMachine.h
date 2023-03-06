@@ -140,12 +140,12 @@ namespace RE
 				void                                                              MarkSaveInvalid(BSStorage* a_storage) override;                                                                  // 03
 				std::byte                                                         GetSaveGameVersion() override;                                                                                   // 04 - { return this->saveGameVersion; }
 				void                                                              CleanupSave() override;                                                                                          // 05
-				void                                                              Unk_06() override;                                                                                               // 06
+				void                                                              CleanupLoad() override;                                                                                               // 06
 				void                                                              DropAllRunningData() override;                                                                                   // 07
-				void                                                              Unk_08(void* unk) override;                                                                                      // 08 - { return unk; }
-				void                                                              Unk_09(void) override;                                                                                           // 09 - { return 0; }
-				void                                                              Unk_0A(VMHandle a_handle, Object** a_out) override;                                                              // 0A
-				void                                                              Unk_0B(void* unk) override;                                                                                      // 0B - { return unk; }
+				void                                                              GetSaveHandleForObject(const Object* a_obj) override;                                                                                      // 08 - { return unk; }
+				void                                                              SetSaveHandleforObject(void) override;                                                                                           // 09 - { return 0; }
+				void                                                              GetObjectBySaveHandle(VMHandle a_handle, BSTSmartPointer<BSScript::Object> a_obj_ptr) override;                                                              // 0A
+				void                                                              SetSaveHandleForObject(const Object* a_Object, VMHandle a_handle) override;                                                                                      // 0B - { return unk; }
 				void                                                              Unk_0C(void) override;                                                                                           // 0C - { return 0; }
 				void                                                              Unk_0D(VMHandle a_handle, Array** a_out) override;                                                               // 0D
 				void                                                              Unk_0E(LoadStorageWrapper* a_storage, void* unk) override;                                                       // 0E
