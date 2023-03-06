@@ -38,6 +38,12 @@ namespace RE
 			virtual void PostErrorImpl(const char* a_message, Severity a_severity) = 0;  // 01
 			virtual void ResetImpl();                                                    // 02 - { return; }
 
+			TES_HEAP_REDEFINE_NEW();
+
+			uint32_t GetThreadFatalCount();
+			uint32_t GetThreadErrorCount();
+			uint32_t GetThreadWarningCount();
+
 			// members
 			mutable BSSpinLock                              threadErrorsLock;  // 60
 			BSTHashMap<std::uint32_t, PerThreadErrorCounts> threadErrors;      // 68

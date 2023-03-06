@@ -18,6 +18,8 @@ namespace RE
 			// override (BSScript::ErrorLogger)
 			void PostErrorImpl(const char* a_logEvent, Severity a_severity) override;  // 01
 
+			TES_HEAP_REDEFINE_NEW();
+
 			// members
 			BSFixedString logName;  // 98
 			BSFixedString logPath;  // A0
