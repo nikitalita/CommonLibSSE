@@ -250,6 +250,10 @@ namespace SKSE::WinAPI
     {
         return ::RegGetValueW(reinterpret_cast<::HKEY>(hkey), subKey, value, flags, type, data, length);
     }
+	int ShowCursor(bool bShow) noexcept
+	{
+		return ::ShowCursor(static_cast<::BOOL>(bShow));
+	}
 
 	void TerminateProcess(
 		void*        a_process,

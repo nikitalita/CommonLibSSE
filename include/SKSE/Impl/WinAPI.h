@@ -181,6 +181,7 @@ namespace SKSE::WinAPI
 
     long RegGetValueW(HKEY hkey, const wchar_t* subKey, const wchar_t* value, unsigned long flags, unsigned long* type,
                          void* data, unsigned long* length);
+	[[nodiscard]] int ShowCursor(bool bShow) noexcept;
 
 	[[noreturn]] void TerminateProcess(
 		void*        a_process,

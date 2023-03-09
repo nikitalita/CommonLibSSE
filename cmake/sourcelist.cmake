@@ -211,7 +211,7 @@ set(SOURCES
 	include/RE/B/BSFaceGenKeyframe.h
 	include/RE/B/BSFaceGenKeyframeMultiple.h
 	include/RE/B/BSFaceGenManager.h
-    include/RE/B/BSFaceGenModel.h
+	include/RE/B/BSFaceGenModel.h
 	include/RE/B/BSFaceGenModelExtraData.h
 	include/RE/B/BSFaceGenNiNode.h
 	include/RE/B/BSFadeNode.h
@@ -348,8 +348,8 @@ set(SOURCES
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
-	include/RE/B/BSValueNode.h
 	include/RE/B/BSVRInterface.h
+	include/RE/B/BSValueNode.h
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
@@ -1042,6 +1042,7 @@ set(SOURCES
 	include/RE/M/MemoryManager.h
 	include/RE/M/MemoryPage.h
 	include/RE/M/MenuControls.h
+	include/RE/M/MenuCursor.h
 	include/RE/M/MenuEventHandler.h
 	include/RE/M/MenuModeChangeEvent.h
 	include/RE/M/MenuOpenCloseEvent.h
@@ -1410,6 +1411,7 @@ set(SOURCES
 	include/RE/T/TESWeightForm.h
 	include/RE/T/TESWordOfPower.h
 	include/RE/T/TESWorldSpace.h
+	include/RE/T/TLSData.h
 	include/RE/T/TargetValueModifierEffect.h
 	include/RE/T/TaskQueueInterface.h
 	include/RE/T/TempEffectTraits.h
@@ -1504,21 +1506,18 @@ set(SOURCES
 	src/RE/B/BSFaceGenNiNode.cpp
 	src/RE/B/BSFadeNode.cpp
 	src/RE/B/BSFixedString.cpp
-	src/RE/B/BSGeometry.cpp
 	src/RE/B/BSGamepadDevice.cpp
+	src/RE/B/BSGeometry.cpp
 	src/RE/B/BSHandleRefObject.cpp
 	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceFactory.cpp
 	src/RE/B/BSInputDeviceManager.cpp
 	src/RE/B/BSInstanceTriShape.cpp
-	src/RE/B/BSLightingShaderMaterialBase.cpp
-	src/RE/B/BSLightingShaderProperty.cpp
-	src/RE/B/BSMultiBoundNode.cpp
 	src/RE/B/BSKeyboardDevice.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSLightingShaderProperty.cpp
-	src/RE/B/BSModelDB.cpp
 	src/RE/B/BSMouseDevice.cpp
+	src/RE/B/BSMultiBoundNode.cpp
 	src/RE/B/BSPCGamepadDeviceHandler.cpp
 	src/RE/B/BSPointerHandle.cpp
 	src/RE/B/BSResourceNiBinaryStream.cpp
@@ -1584,7 +1583,7 @@ set(SOURCES
 	src/RE/E/ExtraSoul.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
-    src/RE/F/FormTypes.cpp
+	src/RE/F/FormTypes.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
 	src/RE/G/GAtomic.cpp
@@ -1662,6 +1661,7 @@ set(SOURCES
 	src/RE/M/MaterialIDs.cpp
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
+	src/RE/M/MenuCursor.cpp
 	src/RE/M/MenuEventHandler.cpp
 	src/RE/M/Misc.cpp
 	src/RE/M/MissileProjectile.cpp

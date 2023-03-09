@@ -396,7 +396,7 @@ namespace RE::Offset
 	namespace SkyrimVM
 	{
 		constexpr auto QueuePostRenderCall = RELOCATION_ID(53144, 53955);
-        constexpr auto RelayEvent = RELOCATION_ID(53221, 54033);
+		constexpr auto RelayEvent = RELOCATION_ID(53221, 54033);
 		constexpr auto Singleton = RELOCATION_ID(514315, 400475);
 	}
 
@@ -488,15 +488,19 @@ namespace RE::Offset
 	{
 		constexpr auto Singleton = RELOCATION_ID(516458, 402638);
 	}
-
+	namespace MenuCursor
+	{
+		inline constexpr REL::ID Singleton = RELOCATION_ID(517043, 403551);
+	}
+	
 	constexpr auto CreateRefHandle = RELOCATION_ID(12193, 12326);
 	constexpr auto DebugNotification = RELOCATION_ID(52050, 52933);
 	constexpr auto LookupReferenceByHandle = RELOCATION_ID(12204, 12332);
 	constexpr auto PlaySound = RELOCATION_ID(52054, 52939);
 	constexpr auto TlsIndex = RELOCATION_ID(528600, 415542);
-	constexpr auto pGamepadEnable = RELOCATION_ID(511901,388465);
+	constexpr auto pGamepadEnable = RELOCATION_ID(511901, 388465);
 	constexpr auto pKeyboardDefinitionFilePrefix = RELOCATION_ID(511916, 388487);
-	constexpr auto pDefaultLocale = RELOCATION_ID(500908,358892);
+	constexpr auto pDefaultLocale = RELOCATION_ID(500908, 358892);
 	constexpr auto pMouseDefinitionFile = RELOCATION_ID(511918, 388490);
 	constexpr auto pGamepadDefinitionFile = RELOCATION_ID(511903, 388468);
 
