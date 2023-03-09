@@ -233,6 +233,7 @@ set(SOURCES
 	include/RE/B/BSImagespaceShader.h
 	include/RE/B/BSImagespaceShaderBlur3.h
 	include/RE/B/BSInputDevice.h
+	include/RE/B/BSInputDeviceFactory.h
 	include/RE/B/BSInputDeviceManager.h
 	include/RE/B/BSInstanceTriShape.h
 	include/RE/B/BSIntrusiveRefCounted.h
@@ -1504,13 +1505,21 @@ set(SOURCES
 	src/RE/B/BSFadeNode.cpp
 	src/RE/B/BSFixedString.cpp
 	src/RE/B/BSGeometry.cpp
+	src/RE/B/BSGamepadDevice.cpp
 	src/RE/B/BSHandleRefObject.cpp
 	src/RE/B/BSInputDevice.cpp
+	src/RE/B/BSInputDeviceFactory.cpp
 	src/RE/B/BSInputDeviceManager.cpp
 	src/RE/B/BSInstanceTriShape.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSLightingShaderProperty.cpp
 	src/RE/B/BSMultiBoundNode.cpp
+	src/RE/B/BSKeyboardDevice.cpp
+	src/RE/B/BSLightingShaderMaterialBase.cpp
+	src/RE/B/BSLightingShaderProperty.cpp
+	src/RE/B/BSModelDB.cpp
+	src/RE/B/BSMouseDevice.cpp
+	src/RE/B/BSPCGamepadDeviceHandler.cpp
 	src/RE/B/BSPointerHandle.cpp
 	src/RE/B/BSResourceNiBinaryStream.cpp
 	src/RE/B/BSResponse.cpp

@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSPCOrbisGamepadDevice;
+		inline static constexpr auto VTABLE = VTABLE_BSPCOrbisGamepadDevice;
 
 		struct Keys
 		{
@@ -147,6 +148,11 @@ namespace RE
 		float    currentLY;         // 1EC
 		float    currentRX;         // 1F0
 		float    currentRY;         // 1F4
+	protected:
+		friend class BSGamepadDeviceHandler;
+		TES_HEAP_REDEFINE_NEW();
+		BSPCOrbisGamepadDevice(): BSPCGamepadDeviceDelegate(), previousHIDState(), previousLT(), previousRT(), previousLX(), previousLY(), previousRX(), previousRY(), currentHIDState(), currentLT(), currentRT(), currentLX(), currentLY(), currentRX(), currentRY() {
+		}
 	};
 	static_assert(sizeof(BSPCOrbisGamepadDevice) == 0x1F8);
 

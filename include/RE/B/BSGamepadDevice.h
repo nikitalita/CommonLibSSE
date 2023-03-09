@@ -13,6 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSGamepadDevice;
+		inline static constexpr auto VTABLE = VTABLE_BSGamepadDevice;
 
 		~BSGamepadDevice() override;  // 00
 
@@ -27,11 +28,16 @@ namespace RE
 		virtual void ProcessRawInput(int32_t a_rawX, int32_t a_rawY, float& a_outX, float& a_outY);  // 0D
 		virtual void Unk_0E(void);                                                                   // 0E - { return; }
 
+
 		// members
 		std::int32_t  userIndex;          // C8
 		bool          connected;          // CC
 		bool          listeningForInput;  // CD
 		std::uint16_t padCE;              // CE
+
+	protected:
+		TES_HEAP_REDEFINE_NEW();
+		BSGamepadDevice();
 	};
 	static_assert(sizeof(BSGamepadDevice) == 0xD0);
 }

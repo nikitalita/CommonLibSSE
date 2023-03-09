@@ -43,13 +43,20 @@ namespace RE
 		void Release() override;              // 03
 		void Reset() override;                // 08
 		void Reinitialize(void) override;     // 09
+	protected:
+		TES_HEAP_REDEFINE_NEW();
+		friend class BSInputDeviceFactory;
+		BSWin32MouseDevice() :
+			BSMouseDevice(), dInputDevice(nullptr), notInitialized(false), reinitializeLock(), dInputPrevState(), dInputNextState(){};
 
+	public:
 		// members
-		void *             dInputDevice;      // 78 - IDirectInputDevice8A*
-		__DIMOUSESTATE2    dInputPrevState;   // 80
-		__DIMOUSESTATE2    dInputNextState;   // 94
-		bool               notInitialized;    // A8
-		mutable BSSpinLock reinitializeLock;  // AC
+		void*              dInputDevice;       // 78 - IDirectInputDevice8A*
+		__DIMOUSESTATE2    dInputPrevState{};  // 80
+		__DIMOUSESTATE2    dInputNextState{};  // 94
+		bool               notInitialized;     // A8
+		mutable BSSpinLock reinitializeLock;   // AC
 	};
+
 	static_assert(sizeof(BSWin32MouseDevice) == 0xB8);
 }

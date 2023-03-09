@@ -10,6 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSPCGamepadDeviceDelegate;
+		inline static constexpr auto VTABLE = VTABLE_BSPCGamepadDeviceDelegate;
 
 		~BSPCGamepadDeviceDelegate() override;  // 00
 
@@ -22,6 +23,10 @@ namespace RE
 
 		// members
 		BSPCGamepadDeviceHandler* gamepadDeviceHandler;  // D0
+	protected:
+		friend class BSGamepadDeviceHandler;
+		TES_HEAP_REDEFINE_NEW();
+		BSPCGamepadDeviceDelegate(): BSGamepadDevice(), gamepadDeviceHandler(nullptr) {};
 	};
 	static_assert(sizeof(BSPCGamepadDeviceDelegate) == 0xD8);
 }

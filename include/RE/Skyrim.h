@@ -235,6 +235,7 @@
 #include "RE/B/BSImagespaceShader.h"
 #include "RE/B/BSImagespaceShaderBlur3.h"
 #include "RE/B/BSInputDevice.h"
+#include "RE/B/BSInputDeviceFactory.h"
 #include "RE/B/BSInputDeviceManager.h"
 #include "RE/B/BSInstanceTriShape.h"
 #include "RE/B/BSIntrusiveRefCounted.h"

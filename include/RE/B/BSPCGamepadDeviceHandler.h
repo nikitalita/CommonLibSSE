@@ -10,6 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSPCGamepadDeviceHandler;
+		inline static constexpr auto VTABLE = VTABLE_BSPCGamepadDeviceHandler;
 
 		~BSPCGamepadDeviceHandler() override;  // 00
 
@@ -23,8 +24,17 @@ namespace RE
 		bool          IsEnabled() const override;                                             // 07 - { return currentPCGamePadDelegate != 0; }
 		void          Reset() override;                                                       // 08
 
+		void InitializeDelegate(); // called by Initialize() and Process() to initialize the delegate
+
 		// members
 		BSPCGamepadDeviceDelegate* currentPCGamePadDelegate;  // 08
+	protected:
+		TES_HEAP_REDEFINE_NEW();
+		friend class BSInputDeviceFactory;
+		BSPCGamepadDeviceHandler() :
+			BSIInputDevice(), currentPCGamePadDelegate(nullptr) {
+		};
 	};
+
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x10);
 }

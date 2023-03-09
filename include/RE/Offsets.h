@@ -494,4 +494,10 @@ namespace RE::Offset
 	constexpr auto LookupReferenceByHandle = RELOCATION_ID(12204, 12332);
 	constexpr auto PlaySound = RELOCATION_ID(52054, 52939);
 	constexpr auto TlsIndex = RELOCATION_ID(528600, 415542);
+	constexpr auto pGamepadEnable = RELOCATION_ID(511901,388465);
+	constexpr auto pKeyboardDefinitionFilePrefix = RELOCATION_ID(511916, 388487);
+	constexpr auto pDefaultLocale = RELOCATION_ID(500908,358892);
+	constexpr auto pMouseDefinitionFile = RELOCATION_ID(511918, 388490);
+	constexpr auto pGamepadDefinitionFile = RELOCATION_ID(511903, 388468);
+
 }

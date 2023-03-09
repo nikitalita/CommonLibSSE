@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSFixedString.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/I/InputDevices.h"
@@ -7,6 +8,7 @@
 namespace RE
 {
 	class BSIInputDevice;
+	class BSInputDevice;
 	class BSPCGamepadDeviceDelegate;
 	class BSPCGamepadDeviceHandler;
 	class BSTrackedControllerDevice;
@@ -62,6 +64,15 @@ namespace RE
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x80, 0x98);
 		}
+		bool                          IsMouseBackground();
+		bool                          GetDeviceKeyMapping(INPUT_DEVICE a_device, std::uint32_t a_key, BSFixedString& a_mapping);
+		bool                          GetDeviceMappedKeycode(INPUT_DEVICE a_device, std::uint32_t a_key, std::uint32_t& a_outKeyCode);
+		void                          ProcessGamepadEnabledChange();
+		void                          ReinitializeMouse();
+		void                          CreateInputDevices();
+		void                          ResetInputDevices();
+		void                          DestroyInputDevices();
+		void                          PollInputDevices(float secsSinceLastFrame);
 
 		// members
 		std::uint8_t    pad59;       // 59

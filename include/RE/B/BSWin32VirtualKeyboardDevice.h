@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32VirtualKeyboardDevice;
+		inline static constexpr auto VTABLE = VTABLE_BSWin32VirtualKeyboardDevice;
 
 		~BSWin32VirtualKeyboardDevice() override;  // 00
 
@@ -19,6 +20,10 @@ namespace RE
 		void Unk_0B(void) override;           // 0B - { return; }
 		void Unk_0C(void) override;           // 0C - { return; }
 		void Unk_0D(void) override;           // 0D - { return; }
+	protected:
+		TES_HEAP_REDEFINE_NEW();
+		friend class BSInputDeviceFactory;
+		BSWin32VirtualKeyboardDevice() : BSVirtualKeyboardDevice() {}
 	};
 	static_assert(sizeof(BSWin32VirtualKeyboardDevice) == 0x70);
 }
