@@ -22,4 +22,11 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(35601, 36609) };
 		return func();
 	}
+
+	void Main::SetActive(bool a_active)
+	{
+		using func_t = decltype(&Main::SetActive);
+		REL::Relocation<func_t> func{ Offset::Main::SetActive };
+		return func(this, a_active);
+	}
 }

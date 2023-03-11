@@ -488,6 +488,11 @@ namespace RE::Offset
 	{
 		constexpr auto Singleton = RELOCATION_ID(516458, 402638);
 	}
+	namespace Main
+	{
+		constexpr auto SetActive = RELOCATION_ID(35598, 36606);
+	}
+
 	namespace MenuCursor
 	{
 		constexpr auto Singleton = RELOCATION_ID(517043, 403551);

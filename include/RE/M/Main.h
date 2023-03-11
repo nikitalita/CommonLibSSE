@@ -68,6 +68,8 @@ namespace RE
 
 		static NiCamera* WorldRootCamera();
 
+		void SetActive(bool a_active);
+
 		// members
 		bool                         quitGame;                     // 010
 		bool                         resetGame;                    // 011
