@@ -1209,6 +1209,7 @@ set(SOURCES
 	include/RE/R/RenderTargetManager.h
 	include/RE/R/RenderTargetProperties.h
 	include/RE/R/Request.h
+	include/RE/R/Rumble.h
 	include/RE/R/RunHandler.h
 	include/RE/RTTI.h
 	include/RE/S/SFTypes.h
@@ -1714,6 +1715,7 @@ set(SOURCES
 	src/RE/P/Projectile.cpp
 	src/RE/Q/QuestStatus.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
+	src/RE/R/Rumble.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
 	src/RE/S/ScriptEventSourceHolder.cpp

@@ -1208,6 +1208,7 @@
 #include "RE/R/RenderTargetManager.h"
 #include "RE/R/RenderTargetProperties.h"
 #include "RE/R/Request.h"
+#include "RE/R/Rumble.h"
 #include "RE/R/RunHandler.h"
 #include "RE/RTTI.h"
 #include "RE/S/SafeZoneMenu.h"

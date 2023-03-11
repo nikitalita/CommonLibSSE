@@ -493,6 +493,11 @@ namespace RE::Offset
 		constexpr auto SetActive = RELOCATION_ID(35598, 36606);
 	}
 
+	namespace Rumble
+	{
+		inline constexpr REL::ID DisableRumble = RELOCATION_ID(67224, 68533);
+	}
+
 	namespace MenuCursor
 	{
 		constexpr auto Singleton = RELOCATION_ID(517043, 403551);
