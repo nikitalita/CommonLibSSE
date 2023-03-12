@@ -488,6 +488,18 @@ namespace RE::Offset
 	{
 		constexpr auto Singleton = RELOCATION_ID(516458, 402638);
 	}
+
+	namespace BSDirectInputManager
+	{
+		inline constexpr REL::ID Singleton = RELOCATION_ID(517046, 403554);
+		inline constexpr REL::ID GetDeviceState = RELOCATION_ID(67375, 68677);
+		inline constexpr REL::ID GetDeviceData = RELOCATION_ID(67376, 68678);
+		inline constexpr REL::ID ReleaseDevice = RELOCATION_ID(67374, 68676);
+		inline constexpr REL::ID CreateDeviceWithGUID = RELOCATION_ID(67373, 68675);
+		inline constexpr REL::ID ctor = RELOCATION_ID(67372, 68674);
+		inline constexpr REL::ID dtor = RELOCATION_ID(67371, 68673);
+	}
+
 	namespace Main
 	{
 		constexpr auto SetActive = RELOCATION_ID(35598, 36606);
