@@ -22,6 +22,7 @@ namespace RE
 		void Unk_0A(void) override;           // 0A - { return; }
 
 		[[nodiscard]] bool IsPressed(std::uint32_t a_keyCode) const;
+		[[nodiscard]] Key  RemapNumpadKey(DirectInput8::DIKey key);
 
 		// members
 		DirectInput8::IDirectInput8A*    dInputDevice;      // 070
