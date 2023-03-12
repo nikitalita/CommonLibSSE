@@ -490,9 +490,9 @@ namespace RE::Offset
 	}
 	namespace MenuCursor
 	{
-		inline constexpr REL::ID Singleton = RELOCATION_ID(517043, 403551);
+		constexpr auto Singleton = RELOCATION_ID(517043, 403551);
 	}
-	
+
 	constexpr auto CreateRefHandle = RELOCATION_ID(12193, 12326);
 	constexpr auto DebugNotification = RELOCATION_ID(52050, 52933);
 	constexpr auto LookupReferenceByHandle = RELOCATION_ID(12204, 12332);

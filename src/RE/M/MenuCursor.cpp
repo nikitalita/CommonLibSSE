@@ -8,7 +8,7 @@ namespace RE
 			do {
 				showCursorCount = WinAPI::ShowCursor(true);
 			} while (showCursorCount < 0);
-		} else if (showCursorCount >= 0) {
+		} else if (!a_visible && showCursorCount >= 0) {
 			do {
 				showCursorCount = WinAPI::ShowCursor(false);
 			} while (showCursorCount >= 0);
