@@ -5,13 +5,6 @@
 
 namespace RE
 {
-	struct __DIMOUSESTATE2 {
-		std::int32_t lX;
-		std::int32_t lY;
-		std::int32_t lZ;
-		std::byte rgbButtons[8];
-	};
-
 	class BSWin32MouseDevice : public BSMouseDevice
 	{
 	public:
@@ -51,11 +44,11 @@ namespace RE
 
 	public:
 		// members
-		void*              dInputDevice;       // 78 - IDirectInputDevice8A*
-		__DIMOUSESTATE2    dInputPrevState{};  // 80
-		__DIMOUSESTATE2    dInputNextState{};  // 94
-		bool               notInitialized;     // A8
-		mutable BSSpinLock reinitializeLock;   // AC
+		DirectInput8::IDirectInputDevice8A* dInputDevice;       // 78
+		DirectInput8::DIMOUSESTATE2         dInputPrevState{};  // 80
+		DirectInput8::DIMOUSESTATE2         dInputNextState{};  // 94
+		bool                                notInitialized;     // A8
+		mutable BSSpinLock                  reinitializeLock;   // AC
 	};
 
 	static_assert(sizeof(BSWin32MouseDevice) == 0xB8);

@@ -1453,10 +1453,13 @@ set(SOURCES
 	include/SKSE/API.h
 	include/SKSE/Events.h
 	include/SKSE/IAT.h
+	include/SKSE/Impl/DInputAPI.h
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
 	include/SKSE/Impl/WinAPI.h
+	include/SKSE/Impl/XInputAPI.h
+	include/SKSE/InputMap.h
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h
 	include/SKSE/RegistrationMap.h

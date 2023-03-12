@@ -4,14 +4,6 @@
 
 namespace RE
 {
-	struct __DIDEVICEOBJECTDATA {
-		std::uint32_t dwOfs;      // 00
-		std::uint32_t dwData;     // 04
-		std::uint32_t dwTimeStamp;// 08
-		std::uint32_t dwSequence; // 0C
-		std::uint32_t* uAppData;  // 10
-	};
-	static_assert(sizeof(__DIDEVICEOBJECTDATA) == 0x18);
 
 	class BSWin32KeyboardDevice : public BSKeyboardDevice
 	{
@@ -32,11 +24,11 @@ namespace RE
 		[[nodiscard]] bool IsPressed(std::uint32_t a_keyCode) const;
 
 		// members
-		void*                dInputDevice;      // 070 -- IDirectInputDevice8A*
-		__DIDEVICEOBJECTDATA diObjData[10];     // 078
-		std::uint8_t         prevState[0x100];  // 168
-		std::uint8_t         curState[0x100];   // 268
-		bool                 capsLockOn;        // 368
+		DirectInput8::IDirectInput8A*    dInputDevice;      // 070
+		DirectInput8::DIDEVICEOBJECTDATA diObjData[10];     // 078
+		std::uint8_t                     prevState[0x100];  // 168
+		std::uint8_t                     curState[0x100];   // 268
+		bool                             capsLockOn;        // 368
 
 	protected:
 		TES_HEAP_REDEFINE_NEW();
