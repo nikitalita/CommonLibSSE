@@ -1201,6 +1201,10 @@ namespace RE
 		{
 			inline constexpr REL::ID DisableRumble = RELOCATION_ID(67224, 68533);
 		}
+		namespace BSGraphics
+		{
+			inline constexpr REL::ID pRendererData = RELOCATION_ID(524728, 411347);
+		}
 
 		inline constexpr REL::ID pGamepadEnable(RELOCATION_ID(511901,388465));
 		inline constexpr REL::ID pKeyboardDefinitionFilePrefix(RELOCATION_ID(511916, 388487));
