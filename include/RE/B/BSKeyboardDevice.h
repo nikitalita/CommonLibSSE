@@ -136,7 +136,6 @@ namespace RE
 		virtual void Unk_09(void) = 0;  // 09
 		virtual void Unk_0A(void) = 0;  // 0A
 	protected:
-		TES_HEAP_REDEFINE_NEW();
 		BSKeyboardDevice();
 	};
 	static_assert(sizeof(BSKeyboardDevice) == 0x70);

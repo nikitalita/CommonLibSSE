@@ -21,9 +21,8 @@ namespace RE
 		virtual void Unk_0C(void) = 0;  // 0C
 		virtual void Unk_0D(void) = 0;  // 0D
 	protected:
-		TES_HEAP_REDEFINE_NEW();
 		friend class BSInputDeviceFactory;
-		BSVirtualKeyboardDevice() : BSKeyboardDevice() {} // The virtual keyboard device constructor does not set the device type to virtualKeyboard, it remains 'kKeyboard'
+		BSVirtualKeyboardDevice(); // The virtual keyboard device constructor does not set the device type to virtualKeyboard, it remains 'kKeyboard'
 	};
 	static_assert(sizeof(BSVirtualKeyboardDevice) == 0x70);
 }

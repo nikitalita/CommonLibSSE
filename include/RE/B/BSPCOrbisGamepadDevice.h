@@ -150,9 +150,7 @@ namespace RE
 		float    currentRY;         // 1F4
 	protected:
 		friend class BSGamepadDeviceHandler;
-		TES_HEAP_REDEFINE_NEW();
-		BSPCOrbisGamepadDevice(): BSPCGamepadDeviceDelegate(), previousHIDState(), previousLT(), previousRT(), previousLX(), previousLY(), previousRX(), previousRY(), currentHIDState(), currentLT(), currentRT(), currentLX(), currentLY(), currentRX(), currentRY() {
-		}
+		BSPCOrbisGamepadDevice();
 	};
 	static_assert(sizeof(BSPCOrbisGamepadDevice) == 0x1F8);
 

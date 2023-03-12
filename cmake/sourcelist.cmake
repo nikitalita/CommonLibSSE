@@ -1527,7 +1527,9 @@ set(SOURCES
 	src/RE/B/BSLightingShaderProperty.cpp
 	src/RE/B/BSMouseDevice.cpp
 	src/RE/B/BSMultiBoundNode.cpp
+	src/RE/B/BSPCGamepadDeviceDelegate.cpp
 	src/RE/B/BSPCGamepadDeviceHandler.cpp
+	src/RE/B/BSPCOrbisGamepadDevice.cpp
 	src/RE/B/BSPointerHandle.cpp
 	src/RE/B/BSResourceNiBinaryStream.cpp
 	src/RE/B/BSResponse.cpp
@@ -1540,9 +1542,13 @@ set(SOURCES
 	src/RE/B/BSSystemFileStorage.cpp
 	src/RE/B/BSTArray.cpp
 	src/RE/B/BSTCreateFactoryManager.cpp
+	src/RE/B/BSVirtualKeyboardDevice.cpp
 	src/RE/B/BSVisit.cpp
+	src/RE/B/BSWin32GamepadDevice.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
+	src/RE/B/BSWin32MouseDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp
+	src/RE/B/BSWin32VirtualKeyboardDevice.cpp
 	src/RE/B/BSWindModifier.cpp
 	src/RE/B/BSXFlags.cpp
 	src/RE/B/BarterMenu.cpp

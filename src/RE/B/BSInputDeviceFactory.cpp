@@ -1,6 +1,3 @@
-//
-// Created by Nikita on 3/8/2023.
-//
 #include "RE/B/BSInputDeviceFactory.h"
 #include "RE/B/BSPCGamepadDeviceHandler.h"
 #include "RE/B/BSWin32KeyboardDevice.h"

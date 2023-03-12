@@ -1,7 +1,3 @@
-//
-// Created by Nikita on 3/8/2023.
-//
-
 #include "RE/B/BSGamepadDevice.h"
 
 namespace RE

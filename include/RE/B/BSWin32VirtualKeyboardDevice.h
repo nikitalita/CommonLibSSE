@@ -21,9 +21,8 @@ namespace RE
 		void Unk_0C(void) override;           // 0C - { return; }
 		void Unk_0D(void) override;           // 0D - { return; }
 	protected:
-		TES_HEAP_REDEFINE_NEW();
 		friend class BSInputDeviceFactory;
-		BSWin32VirtualKeyboardDevice() : BSVirtualKeyboardDevice() {}
+		BSWin32VirtualKeyboardDevice();
 	};
 	static_assert(sizeof(BSWin32VirtualKeyboardDevice) == 0x70);
 }

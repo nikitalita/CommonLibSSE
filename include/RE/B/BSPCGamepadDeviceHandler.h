@@ -29,11 +29,8 @@ namespace RE
 		// members
 		BSPCGamepadDeviceDelegate* currentPCGamePadDelegate;  // 08
 	protected:
-		TES_HEAP_REDEFINE_NEW();
 		friend class BSInputDeviceFactory;
-		BSPCGamepadDeviceHandler() :
-			BSIInputDevice(), currentPCGamePadDelegate(nullptr) {
-		};
+		BSPCGamepadDeviceHandler();
 	};
 
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x10);

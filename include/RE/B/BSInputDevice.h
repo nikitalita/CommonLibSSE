@@ -35,19 +35,19 @@ namespace RE
 		[[nodiscard]] bool IsGamepad() const;
 		[[nodiscard]] bool IsPressed(std::uint32_t a_keyCode) const;
 
-		bool LoadControlsDefinitionFile(const char* a_fileName); // loads the controls definition file from <FILENAME>.txt (usually located in 'interface\controls' folder)
-		void ResetButtonMaps(); 				                 // resets the button maps
-		void SetButtonState(std::uint32_t a_buttonId, float timeSinceLastPoll, bool buttonWasPressed, bool buttonIsPressed); // sets the button state for a given key code and emits a button event if necessary
-	protected:
-		TES_HEAP_REDEFINE_NEW();
-		friend class BSInputDeviceFactory;
-		BSInputDevice();
-    public:
+		bool LoadControlsDefinitionFile(const char* a_fileName);                                                              // loads the controls definition file from <FILENAME>.txt (usually located in 'interface\controls' folder)
+		void ResetButtonMaps();                                                                                               // resets the button maps
+		void SetButtonState(std::uint32_t a_buttonId, float timeSinceLastPoll, bool buttonWasPressed, bool buttonIsPressed);  // sets the button state for a given key code and emits a button event if necessary
+
 		// members
 		INPUT_DEVICE                             device;           // 08
 		std::uint32_t                            pad0C;            // 0C
 		BSTHashMap<std::uint32_t, InputButton*>  deviceButtons;    // 10
 		BSTHashMap<BSFixedString, std::uint32_t> buttonNameIDMap;  // 40
+
+	protected:
+		friend class BSInputDeviceFactory;
+		BSInputDevice();
 	};
 	static_assert(sizeof(BSInputDevice) == 0x70);
 }

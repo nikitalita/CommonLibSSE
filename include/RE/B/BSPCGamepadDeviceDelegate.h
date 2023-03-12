@@ -25,8 +25,7 @@ namespace RE
 		BSPCGamepadDeviceHandler* gamepadDeviceHandler;  // D0
 	protected:
 		friend class BSGamepadDeviceHandler;
-		TES_HEAP_REDEFINE_NEW();
-		BSPCGamepadDeviceDelegate(): BSGamepadDevice(), gamepadDeviceHandler(nullptr) {};
+		BSPCGamepadDeviceDelegate();
 	};
 	static_assert(sizeof(BSPCGamepadDeviceDelegate) == 0xD8);
 }
