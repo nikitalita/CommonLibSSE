@@ -496,6 +496,28 @@ namespace RE::DirectX
 		float m[4][4];
 	};
 	static_assert(sizeof(XMFLOAT4X4) == 0x40);
+
+	struct DXGI_RATIONAL
+	{
+	public:
+		// members
+		std::uint32_t numerator;    // 00
+		std::uint32_t denominator;  // 04
+	};
+	static_assert(sizeof(DXGI_RATIONAL) == 0x08);
+	enum DXGI_MODE_SCALING : std::uint32_t
+	{
+		DXGI_MODE_SCALING_UNSPECIFIED   = 0,
+		DXGI_MODE_SCALING_CENTERED      = 1,
+		DXGI_MODE_SCALING_STRETCHED     = 2
+	};
+	enum DXGI_MODE_SCANLINE_ORDER : std::uint32_t
+	{
+		DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED        = 0,
+		DXGI_MODE_SCANLINE_ORDER_PROGRESSIVE        = 1,
+		DXGI_MODE_SCANLINE_ORDER_UPPER_FIELD_FIRST  = 2,
+		DXGI_MODE_SCANLINE_ORDER_LOWER_FIELD_FIRST  = 3
+	};
 }
 
 #define CP_UTF8 ::SKSE::WinAPI::CP_UTF8

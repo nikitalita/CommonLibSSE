@@ -7,10 +7,13 @@ struct ID3D11DeviceContext;
 struct IDXGISwapChain;
 struct ID3D11RenderTargetView1;
 struct ID3D11ShaderResourceView1;
-
+struct ID3D11RenderTargetView;
+struct ID3D11UnorderedAccessView;
+struct ID3D11DeviceContext2;
+struct ID3D11DepthStencilView;
 namespace RE
 {
-	class BSRenderManager
+	namespace BSGraphics
 	{
 	public:
 		struct RUNTIME_DATA

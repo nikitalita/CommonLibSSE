@@ -514,6 +514,10 @@ namespace RE::Offset
 	{
 		constexpr auto Singleton = RELOCATION_ID(517043, 403551);
 	}
+	namespace BSGraphics
+	{
+		inline constexpr REL::ID pRendererData = RELOCATION_ID(524728, 411347);
+	}
 	namespace BSInputEventQueue
 	{
 		constexpr auto Singleton = RELOCATION_ID(520856, 407374);
