@@ -224,6 +224,7 @@
 #include "RE/B/BSGameSound.h"
 #include "RE/B/BSGamepadDevice.h"
 #include "RE/B/BSGeometry.h"
+#include "RE/B/BSGraphics.h"
 #include "RE/B/BSHandleRefObject.h"
 #include "RE/B/BSIInputDevice.h"
 #include "RE/B/BSIMusicTrack.h"

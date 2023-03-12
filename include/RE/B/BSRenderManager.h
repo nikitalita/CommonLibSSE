@@ -1,16 +1,8 @@
 #pragma once
 
 #include "RE/N/NiTexture.h"
+#include "RE/B/BSGraphics.h"
 
-struct ID3D11Device;
-struct ID3D11DeviceContext;
-struct IDXGISwapChain;
-struct ID3D11RenderTargetView1;
-struct ID3D11ShaderResourceView1;
-struct ID3D11RenderTargetView;
-struct ID3D11UnorderedAccessView;
-struct ID3D11DeviceContext2;
-struct ID3D11DepthStencilView;
 namespace RE
 {
 	namespace BSGraphics
@@ -65,6 +57,97 @@ namespace RE
 		[[nodiscard]] inline const SKSE::WinAPI::CRITICAL_SECTION& GetLock() const noexcept
 		{
 			return REL::RelocateMember<SKSE::WinAPI::CRITICAL_SECTION>(this, 0x2790, 0x2F00);
+		}
+		
+		void Init(RendererInitOSData* a_data, ApplicationWindowProperties* windowProps, WinAPI::HWND window)
+		{
+			using func_t = decltype(&BSRenderManager::Init);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Init };
+			return func(this, a_data, windowProps, window);
+		}
+		void Begin(std::uint32_t windowID)
+		{
+			using func_t = decltype(&BSRenderManager::Begin);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Begin };
+			return func(this, windowID);
+		}
+		void CreateSwapChain(WinAPI::HWND * window, bool setCurrent)
+		{
+			using func_t = decltype(&BSRenderManager::CreateSwapChain);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::CreateSwapChain };
+			return func(this, window, setCurrent);
+		}
+		void End()
+		{
+			using func_t = decltype(&BSRenderManager::End);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::End };
+			return func(this);
+		}
+		void KillWindow(std::uint32_t windowID)
+		{
+			using func_t = decltype(&BSRenderManager::KillWindow);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::KillWindow };
+			return func(this, windowID);
+		}
+		void Lock()
+		{
+			using func_t = decltype(&BSRenderManager::Lock);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Lock };
+			return func(this);
+		}
+		void Unlock()
+		{
+			using func_t = decltype(&BSRenderManager::Unlock);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Unlock };
+			return func(this);
+		}
+		void ResizeWindow(std::uint32_t windowID, std::uint32_t width, std::uint32_t height, bool fullscreen, bool borderless)
+		{
+			using func_t = decltype(&BSRenderManager::ResizeWindow);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::ResizeWindow };
+			return func(this, windowID, width, height, fullscreen, borderless);
+		}
+		void RequestWindowResize(std::uint32_t width, std::uint32_t height)
+		{
+			using func_t = decltype(&BSRenderManager::RequestWindowResize);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::RequestWindowResize };
+			return func(this, width, height);
+		}
+		void SetWindowPosition(std::uint32_t windowID, std::int32_t x, std::int32_t y)
+		{
+			using func_t = decltype(&BSRenderManager::SetWindowPosition);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::SetWindowPosition };
+			return func(this, windowID, x, y);
+		}
+		void SetWindowActiveState(bool show)
+		{
+			using func_t = decltype(&BSRenderManager::SetWindowActiveState);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::SetWindowActiveState };
+			return func(this, show);
+		}
+		void WindowSizeChanged(std::uint32_t windowID)
+		{
+			using func_t = decltype(&BSRenderManager::WindowSizeChanged);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::WindowSizeChanged };
+			return func(this, windowID);
+		}
+		void ResetWindow(std::uint32_t windowID)
+		{
+			using func_t = decltype(&BSRenderManager::ResetWindow);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::ResetWindow };
+			return func(this, windowID);
+		}
+		void UpdateViewPort(std::uint32_t a_unk, std::uint32_t b_unk, bool c_unk)
+		{
+			using func_t = decltype(&BSRenderManager::UpdateViewPort);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::UpdateViewPort };
+			return func(this, a_unk, b_unk, c_unk);
+		}
+		void Shutdown()
+		{
+			using func_t = decltype(&BSRenderManager::Shutdown);
+			REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Shutdown };
+			return func(this);
 		}
 
 #ifndef ENABLE_SKYRIM_VR
