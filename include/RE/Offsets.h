@@ -1201,9 +1201,34 @@ namespace RE
 		{
 			inline constexpr REL::ID DisableRumble = RELOCATION_ID(67224, 68533);
 		}
+
 		namespace BSGraphics
 		{
 			inline constexpr REL::ID pRendererData = RELOCATION_ID(524728, 411347);
+			inline constexpr REL::ID pScreenSize = RELOCATION_ID(525002, 411483);
+			inline constexpr REL::ID pDevice = RELOCATION_ID(524729, 411348);
+			inline constexpr REL::ID pCurrentRenderWindow = RELOCATION_ID(524730, 411349);
+			namespace BSRenderManager
+			{
+				inline constexpr REL::ID Singleton = RELOCATION_ID(524907, 411393);
+				inline constexpr REL::ID Ctor = RELOCATION_ID(75444, 77225);
+				inline constexpr REL::ID Init = RELOCATION_ID(75445, 77226);
+				inline constexpr REL::ID Shutdown = RELOCATION_ID(75447, 77228);
+				inline constexpr REL::ID SetWindowPosition = RELOCATION_ID(75448, 77233);
+				inline constexpr REL::ID ResizeWindow = RELOCATION_ID(75449, 77234);
+				inline constexpr REL::ID RequestWindowResize = RELOCATION_ID(75450, 77235);
+				inline constexpr REL::ID SetWindowActiveState = RELOCATION_ID(75451, 77236);
+				inline constexpr REL::ID KillWindow = RELOCATION_ID(75452, 77237);
+				inline constexpr REL::ID WindowSizeChanged = RELOCATION_ID(75453, 77238);
+				inline constexpr REL::ID ResetWindow = RELOCATION_ID(75454, 77239);
+				inline constexpr REL::ID UpdateViewPort = RELOCATION_ID(75455, 77240);
+				inline constexpr REL::ID CreateSwapChain = RELOCATION_ID(75457, 77242);
+				inline constexpr REL::ID Lock = RELOCATION_ID(75458, 77243);
+				inline constexpr REL::ID Unlock = RELOCATION_ID(75459, 77244);
+				inline constexpr REL::ID Begin = RELOCATION_ID(75460, 77245);
+				inline constexpr REL::ID End = RELOCATION_ID(75461,77246);
+
+			}
 		}
 
 		inline constexpr REL::ID pGamepadEnable(RELOCATION_ID(511901,388465));

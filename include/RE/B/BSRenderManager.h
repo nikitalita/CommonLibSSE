@@ -1,111 +1,15 @@
 #pragma once
 
 #include "RE/N/NiTexture.h"
+#include "RE/B/BSGraphics.h"
 
-struct ID3D11Device;
-struct ID3D11DeviceContext;
-struct IDXGISwapChain;
-struct ID3D11RenderTargetView1;
-struct ID3D11ShaderResourceView1;
-struct ID3D11RenderTargetView;
-struct ID3D11UnorderedAccessView;
-struct ID3D11DeviceContext2;
-struct ID3D11DepthStencilView;
 namespace RE
 {
 	namespace BSGraphics
 	{
-		struct RenderTarget
-		{
-			// members
-			ID3D11Texture2D*           texture;      // 00
-			ID3D11Texture2D*           copyTexture;  // 08
-			ID3D11RenderTargetView*    rtView;       // 10
-			ID3D11ShaderResourceView*  srView;       // 18
-			ID3D11ShaderResourceView*  copySRView;   // 20
-			ID3D11UnorderedAccessView* uaView;       // 28
-		};
-		static_assert(sizeof(RenderTarget) == 0x30);
-
-		struct CubemapRenderTarget
-		{
-			ID3D11Texture2D*          Texture;         // 00
-			ID3D11RenderTargetView*   CubeSideRTV[6];  // 08
-			ID3D11ShaderResourceView* SRV;             // 38
-		};
-		static_assert(sizeof(CubemapRenderTarget) == 0x40);
-
-		class DepthStencilTarget
-		{
-		public:
-			// members
-			ID3D11Texture2D*          texture;                        // 00
-			ID3D11DepthStencilView*   dsView[4];                      // 08
-			ID3D11DepthStencilView*   dsViewReadOnlyDepth[4];         // 28
-			ID3D11DepthStencilView*   dsViewReadOnlyStencil[4];       // 48
-			ID3D11DepthStencilView*   dsViewReadOnlyDepthStencil[4];  // 68
-			ID3D11ShaderResourceView* srViewDepth;                    // 88
-			ID3D11ShaderResourceView* srViewStencil;                  // 90
-		};
-		static_assert(sizeof(DepthStencilTarget) == 0x98);
-
-		struct RendererWindow
-		{
-			WinAPI::HWND*   hwnd;                   // 000
-			int32_t         windowX;                // 008
-			int32_t         windowY;                // 00C
-			int32_t         windowWidth;            // 010
-			int32_t         windowHeight;           // 014
-			IDXGISwapChain* swapChain;              // 018
-			RenderTarget    swapChainRenderTarget;  // 020
-		};
-		static_assert(sizeof(RendererWindow) == 0x50);
-
-		struct Texture3DTargetData
-		{
-			std::uint8_t unk000[0x20];  // 000
-		};
-		static_assert(sizeof(Texture3DTargetData) == 0x20);
-
-		struct RendererData
-		{
-			[[nodiscard]] static RendererData* GetSingleton() noexcept
-			{
-				REL::Relocation<RendererData**> singleton{ Offset::BSGraphics::pRendererData };
-				return *singleton;
-			}
-			// members
-			std::uint32_t                     adapter;                     // 0000
-			DirectX::DXGI_RATIONAL            desiredRefreshRate;          // 0004
-			DirectX::DXGI_RATIONAL            actualRefreshRate;           // 000C
-			DirectX::DXGI_MODE_SCALING        scaleMode;                   // 0014
-			DirectX::DXGI_MODE_SCANLINE_ORDER scanlineOrdering;            // 0018
-			std::uint32_t                     fullscreen;                  // 001C
-			bool                              appFullscreen;               // 0020
-			bool                              borderlessWindow;            // 0021
-			bool                              vsync;                       // 0022
-			bool                              instantiated;                // 0023
-			bool                              requestWindowSizeChange;     // 0024
-			std::uint32_t                     newWidth;                    // 0028
-			std::uint32_t                     newHeight;                   // 002C
-			std::uint32_t                     presentInterval;             // 0030
-			ID3D11Device*                     pDevice;                     // 0038
-			ID3D11DeviceContext2*             pContext;                    // 0040
-			RendererWindow                    RenderWindowA[32];           // 0048
-			RenderTarget                      pRenderTargets[114];         // 0A48
-			DepthStencilTarget                pDepthStencils[12];          // 1FA8
-			CubemapRenderTarget               pCubemapRenderTargets[1];    // 26C8
-			Texture3DTargetData               pTexture3DRenderTargets[3];  // 2708
-			float                             ClearColor[4];               // 2768
-			std::uint8_t                      ClearStencil;                // 2778
-			BSCriticalSection                 RendererLock;                // 2780
-			const char*                       className;                   // 27A8
-			WinAPI::HINSTANCE                 instance;                    // 27B0
-		};
-		static_assert(sizeof(RendererData) == 0x27B8);
-
 		class BSRenderManager
 		{
+			// TODO: There is a LOT more that is already reverse engineered at https://github.com/Nukem9/SkyrimSETest/tree/master/skyrim64_test/src/patches/TES/BSGraphics
 		public:
 			[[nodiscard]] static BSRenderManager* GetSingleton() noexcept
 			{
@@ -118,6 +22,96 @@ namespace RE
 				using func_t = decltype(&BSRenderManager::CreateRenderTexture);
 				REL::Relocation<func_t> func{ RELOCATION_ID(75507, 77299) };
 				return func(this, a_width, a_height);
+			}
+			void Init(RendererInitOSData* a_data, ApplicationWindowProperties* windowProps, WinAPI::HWND window)
+			{
+				using func_t = decltype(&BSRenderManager::Init);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Init };
+				return func(this, a_data, windowProps, window);
+			}
+			void Begin(std::uint32_t windowID)
+			{
+				using func_t = decltype(&BSRenderManager::Begin);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Begin };
+				return func(this, windowID);
+			}
+			void CreateSwapChain(WinAPI::HWND * window, bool setCurrent)
+			{
+				using func_t = decltype(&BSRenderManager::CreateSwapChain);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::CreateSwapChain };
+				return func(this, window, setCurrent);
+			}
+			void End()
+			{
+				using func_t = decltype(&BSRenderManager::End);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::End };
+				return func(this);
+			}
+			void KillWindow(std::uint32_t windowID)
+			{
+				using func_t = decltype(&BSRenderManager::KillWindow);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::KillWindow };
+				return func(this, windowID);
+			}
+			void Lock()
+			{
+				using func_t = decltype(&BSRenderManager::Lock);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Lock };
+				return func(this);
+			}
+			void Unlock()
+			{
+				using func_t = decltype(&BSRenderManager::Unlock);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Unlock };
+				return func(this);
+			}
+			void ResizeWindow(std::uint32_t windowID, std::uint32_t width, std::uint32_t height, bool fullscreen, bool borderless)
+			{
+				using func_t = decltype(&BSRenderManager::ResizeWindow);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::ResizeWindow };
+				return func(this, windowID, width, height, fullscreen, borderless);
+			}
+			void RequestWindowResize(std::uint32_t width, std::uint32_t height)
+			{
+				using func_t = decltype(&BSRenderManager::RequestWindowResize);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::RequestWindowResize };
+				return func(this, width, height);
+			}
+			void SetWindowPosition(std::uint32_t windowID, std::int32_t x, std::int32_t y)
+			{
+				using func_t = decltype(&BSRenderManager::SetWindowPosition);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::SetWindowPosition };
+				return func(this, windowID, x, y);
+			}
+			void SetWindowActiveState(bool show)
+			{
+				using func_t = decltype(&BSRenderManager::SetWindowActiveState);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::SetWindowActiveState };
+				return func(this, show);
+			}
+			void WindowSizeChanged(std::uint32_t windowID)
+			{
+				using func_t = decltype(&BSRenderManager::WindowSizeChanged);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::WindowSizeChanged };
+				return func(this, windowID);
+			}
+			void ResetWindow(std::uint32_t windowID)
+			{
+				using func_t = decltype(&BSRenderManager::ResetWindow);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::ResetWindow };
+				return func(this, windowID);
+			}
+			void UpdateViewPort(std::uint32_t a_unk, std::uint32_t b_unk, bool c_unk)
+			{
+				using func_t = decltype(&BSRenderManager::UpdateViewPort);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::UpdateViewPort };
+				return func(this, a_unk, b_unk, c_unk);
+			}
+			void Shutdown()
+			{
+				using func_t = decltype(&BSRenderManager::Shutdown);
+				REL::Relocation<func_t> func{ Offset::BSGraphics::BSRenderManager::Shutdown };
+				return func(this);
 			}
 			using ResetRenderTargets_t = void (*)();
 

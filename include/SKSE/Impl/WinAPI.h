@@ -85,6 +85,11 @@ namespace SKSE::WinAPI
 
 	using HRESULT = std::int32_t;
 
+	struct HICON__;
+	using HICON = HICON__*;
+
+	using WNDPROC = std::int32_t(__stdcall*)(HWND, std::uint32_t, std::uint64_t, std::int64_t);
+
 	enum VKEnum : std::uint32_t
 	{
 		VK_LBUTTON = 0x1,
