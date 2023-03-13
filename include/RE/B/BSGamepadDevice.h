@@ -36,7 +36,6 @@ namespace RE
 		std::uint16_t padCE;              // CE
 
 	protected:
-		TES_HEAP_REDEFINE_NEW();
 		BSGamepadDevice();
 	};
 	static_assert(sizeof(BSGamepadDevice) == 0xD0);

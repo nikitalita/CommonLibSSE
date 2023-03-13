@@ -32,7 +32,6 @@ namespace RE
 		bool                             capsLockOn;        // 368
 
 	protected:
-		TES_HEAP_REDEFINE_NEW();
 		friend class BSInputDeviceFactory;
 		BSWin32KeyboardDevice() :
 			BSKeyboardDevice(), dInputDevice(nullptr), diObjData(), prevState(), curState(), capsLockOn(false){};

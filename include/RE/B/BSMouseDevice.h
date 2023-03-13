@@ -19,7 +19,6 @@ namespace RE
 		bool backgroundMouse;  // 70
 
 	protected:
-		TES_HEAP_REDEFINE_NEW();
 		friend class BSInputDeviceFactory;
 		BSMouseDevice();
 	};
