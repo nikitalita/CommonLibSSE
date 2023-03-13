@@ -36,8 +36,6 @@ namespace RE::DirectInput8
 	using HWND = SKSE::WinAPI::HWND;
 	using HINSTANCE = SKSE::WinAPI::HINSTANCE;
 
-	inline static constexpr std::uint32_t MAX_PATH = 260;
-
 	enum DIKey : std::uint32_t
 	{
 		DIK_ESCAPE = 0x1,

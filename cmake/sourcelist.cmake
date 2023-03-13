@@ -1462,7 +1462,6 @@ set(SOURCES
 	include/SKSE/Impl/Stubs.h
 	include/SKSE/Impl/WinAPI.h
 	include/SKSE/Impl/XInputAPI.h
-	include/SKSE/InputMap.h
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h
 	include/SKSE/RegistrationMap.h
@@ -1520,8 +1519,8 @@ set(SOURCES
 	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceFactory.cpp
 	src/RE/B/BSInputDeviceManager.cpp
-	src/RE/B/BSInstanceTriShape.cpp
 	src/RE/B/BSInputEventQueue.cpp
+	src/RE/B/BSInstanceTriShape.cpp
 	src/RE/B/BSKeyboardDevice.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSLightingShaderProperty.cpp

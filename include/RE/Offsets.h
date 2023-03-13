@@ -491,13 +491,13 @@ namespace RE::Offset
 
 	namespace BSDirectInputManager
 	{
-		inline constexpr REL::ID Singleton = RELOCATION_ID(517046, 403554);
-		inline constexpr REL::ID GetDeviceState = RELOCATION_ID(67375, 68677);
-		inline constexpr REL::ID GetDeviceData = RELOCATION_ID(67376, 68678);
-		inline constexpr REL::ID ReleaseDevice = RELOCATION_ID(67374, 68676);
-		inline constexpr REL::ID CreateDeviceWithGUID = RELOCATION_ID(67373, 68675);
-		inline constexpr REL::ID ctor = RELOCATION_ID(67372, 68674);
-		inline constexpr REL::ID dtor = RELOCATION_ID(67371, 68673);
+		constexpr auto Singleton = RELOCATION_ID(517046, 403554);
+		constexpr auto GetDeviceState = RELOCATION_ID(67375, 68677);
+		constexpr auto GetDeviceData = RELOCATION_ID(67376, 68678);
+		constexpr auto ReleaseDevice = RELOCATION_ID(67374, 68676);
+		constexpr auto CreateDeviceWithGUID = RELOCATION_ID(67373, 68675);
+		constexpr auto ctor = RELOCATION_ID(67372, 68674);
+		constexpr auto dtor = RELOCATION_ID(67371, 68673);
 	}
 
 	namespace Main
@@ -507,7 +507,7 @@ namespace RE::Offset
 
 	namespace Rumble
 	{
-		inline constexpr REL::ID DisableRumble = RELOCATION_ID(67224, 68533);
+		constexpr auto DisableRumble = RELOCATION_ID(67224, 68533);
 	}
 
 	namespace MenuCursor
@@ -516,14 +516,14 @@ namespace RE::Offset
 	}
 	namespace BSInputEventQueue
 	{
-		inline constexpr REL::ID Singleton = RELOCATION_ID(520856, 407374);
-		inline constexpr REL::ID EnqueueButtonEvent = RELOCATION_ID(67382, 68685);
-		inline constexpr REL::ID EnqueueCharEvent = RELOCATION_ID(67383, 68686);
-		inline constexpr REL::ID EnqueueMouseMoveEvent = RELOCATION_ID(67384, 68687);
-		inline constexpr REL::ID EnqueueThumbstickEvent = RELOCATION_ID(67385, 68688);
-		inline constexpr REL::ID EnqueueDeviceConnectEvent = RELOCATION_ID(67386, 68689);
-		inline constexpr REL::ID EnqueueKinectEvent = RELOCATION_ID(67387, 68690);
-		inline constexpr REL::ID Reset = RELOCATION_ID(67388, 68691);
+		constexpr auto Singleton = RELOCATION_ID(520856, 407374);
+		constexpr auto EnqueueButtonEvent = RELOCATION_ID(67382, 68685);
+		constexpr auto EnqueueCharEvent = RELOCATION_ID(67383, 68686);
+		constexpr auto EnqueueMouseMoveEvent = RELOCATION_ID(67384, 68687);
+		constexpr auto EnqueueThumbstickEvent = RELOCATION_ID(67385, 68688);
+		constexpr auto EnqueueDeviceConnectEvent = RELOCATION_ID(67386, 68689);
+		constexpr auto EnqueueKinectEvent = RELOCATION_ID(67387, 68690);
+		constexpr auto Reset = RELOCATION_ID(67388, 68691);
 		// inline constexpr REL::ID ctor = RELOCATION_ID(67332); - inlined in AE
 		// inline constexpr REL::ID dtor = RELOCATION_ID(67341); - inlined in AE
 	}
