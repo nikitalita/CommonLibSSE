@@ -503,5 +503,5 @@ namespace RE::Offset
 	constexpr auto pDefaultLocale = RELOCATION_ID(500908, 358892);
 	constexpr auto pMouseDefinitionFile = RELOCATION_ID(511918, 388490);
 	constexpr auto pGamepadDefinitionFile = RELOCATION_ID(511903, 388468);
-
+	constexpr auto pControlsBackgroundMouse = RELOCATION_ID(511920, 388493);
 }
