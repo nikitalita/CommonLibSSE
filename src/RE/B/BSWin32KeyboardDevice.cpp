@@ -9,7 +9,7 @@ namespace RE
 
 	BSKeyboardDevice::Key BSWin32KeyboardDevice::RemapNumpadKey(DirectInput8::DIKey key)
 	{
-		if (WinAPI::GetKeyState(WinAPI::VKEnum::VK_NUMLOCK) != 1) {
+		if (WinAPI::GetKeyState(WinAPI::VKEnum::kVK_NUMLOCK) != 1) {
 			return Key::kNone;
 		}
 		switch (key) {

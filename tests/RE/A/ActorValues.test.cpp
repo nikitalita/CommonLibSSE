@@ -1,7 +1,8 @@
 #include "catch2/catch_all.hpp"
 
 #include "RE/A/ActorValueList.h"
-
+#include "RE/B/BSInputDeviceFactory.h"
+#include "RE/I/InputDevices.h"
 TEST_CASE("ActorValue/std::to_string", "[.][e2e]")
 {
 	REQUIRE(REL::Module::inject());

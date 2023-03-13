@@ -22,13 +22,11 @@ namespace RE::DirectInput8
 
 	using GUID = SKSE::WinAPI::GUID;
 	using LPGUID = GUID*;
-	using REFGUID = const GUID&;
 	using FILETIME = SKSE::WinAPI::FILETIME;
 	using RECT = SKSE::WinAPI::RECT;
 	using POINT = SKSE::WinAPI::POINT;
 
 	using IID = GUID;
-	using REFIID = const IID&;
 	using LPIID = IID*;
 	using D3DCOLOR = std::uint32_t;
 
@@ -496,7 +494,7 @@ namespace RE::DirectInput8
 
 	struct __declspec(novtable) IDirectInputEffect : public IUnknown
 	{
-		virtual HRESULT Initialize(HINSTANCE, DWORD, REFGUID) noexcept = 0;
+		virtual HRESULT Initialize(HINSTANCE, DWORD, const GUID&) noexcept = 0;
 		virtual HRESULT GetEffectGuid(LPGUID) noexcept = 0;
 		virtual HRESULT GetParameters(LPDIEFFECT, DWORD) noexcept = 0;
 		virtual HRESULT SetParameters(LPCDIEFFECT, DWORD) noexcept = 0;
