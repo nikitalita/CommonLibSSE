@@ -37,4 +37,8 @@ namespace RE
 		GetStaticTLSData()->taskFlag = lastTask;
 		return device;
 	}
+	void BSInputDeviceFactory::DestroyInputDevice(BSIInputDevice* a_device)
+	{
+		delete a_device;
+	}
 }
