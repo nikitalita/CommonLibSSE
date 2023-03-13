@@ -98,10 +98,10 @@ namespace RE
 
 	void BSInputDeviceManager::ProcessGamepadEnabledChange()
 	{
-		if (valueQueued) {
+		if (GetRuntimeData().valueQueued) {
 			bool* pGamepadEnable = (bool*)Offset::pGamepadEnable.address();
 			*pGamepadEnable = true;
-			valueQueued = false;
+			GetRuntimeData().valueQueued = false;
 		}
 	}
 
