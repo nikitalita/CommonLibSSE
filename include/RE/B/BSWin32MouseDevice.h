@@ -9,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32MouseDevice;
+		inline static constexpr auto VTABLE = VTABLE_BSWin32MouseDevice;
 
 		struct Keys
 		{

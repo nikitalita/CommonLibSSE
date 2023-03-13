@@ -31,10 +31,10 @@ namespace RE
 		std::uint8_t                     curState[0x100];   // 268
 		bool                             capsLockOn;        // 368
 
+
 	protected:
 		friend class BSInputDeviceFactory;
-		BSWin32KeyboardDevice() :
-			BSKeyboardDevice(), dInputDevice(nullptr), diObjData(), prevState(), curState(), capsLockOn(false){};
+		BSWin32KeyboardDevice();
 	};
 	static_assert(offsetof(BSWin32KeyboardDevice, prevState) == 0x168);
 	static_assert(offsetof(BSWin32KeyboardDevice, curState) == 0x268);
