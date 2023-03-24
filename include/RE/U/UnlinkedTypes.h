@@ -125,6 +125,17 @@ namespace RE
 			};
 			static_assert(sizeof(InstructionStream) == 0x48);
 
+			class InstructionBuilder
+			{
+				BSScript::UnlinkedTypes::InstructionStream* stream;          // 00
+				uint32_t                                    unk08;           // 08
+				uint32_t                                    argCount;        // 0C
+				void*                                       unk10;           // 10
+				bool                                        argsAreInvalid;  // 18
+				char                                        pad19[7];        // 19
+				BSTArray<ByteCode::Argument>                arguments;       // 20
+			};
+
 			class Function
 			{
 			public:
