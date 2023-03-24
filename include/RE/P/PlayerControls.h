@@ -4,6 +4,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
+#include "RE/H/HeldStateHandler.h"
 #include "RE/P/PlayerControlsData.h"
 
 namespace RE
@@ -50,9 +51,10 @@ namespace RE
 		PlayerControlsData            data;                   // 024
 		std::uint32_t                 pad054;                 // 054
 		BSTArray<PlayerInputHandler*> handlers;               // 058
-		BSTArray<void*>               unk070;                 // 070
-		BSTArray<void*>               unk088;                 // 088
-		std::uint8_t                  unk0A0[8];              // 0A0
+		BSTArray<HeldStateHandler*>   heldStateHandlers;      // 070
+		BSTArray<PlayerInputHandler*> pendingAddedHandlers;   // 088
+		bool						              notifyingHandlers;      // 0A0
+		std::uint8_t                  unk0A1[7];              // 0A1
 		std::uint64_t                 unk0A8;                 // 0A8
 		float                         unk0B0[8];              // 0B0
 		std::uint32_t                 unk0D0[10];             // 0D0
