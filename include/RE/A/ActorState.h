@@ -98,16 +98,16 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t     movingBack: 1;        // 0:00
-			std::uint32_t     movingForward: 1;     // 0:01
-			std::uint32_t     movingRight: 1;       // 0:02
-			std::uint32_t     movingLeft: 1;        // 0:03
-			std::uint32_t     unk04: 2;             // 0:04
-			std::uint32_t     walking: 1;           // 0:06
-			std::uint32_t     running: 1;           // 0:07
-			std::uint32_t     sprinting: 1;         // 0:08
-			std::uint32_t     sneaking: 1;          // 0:09
-			std::uint32_t     swimming: 1;          // 0:10
+			std::uint32_t     movingBack: 1;        // 0:00 : 0x0001
+			std::uint32_t     movingForward: 1;     // 0:01 : 0x0002
+			std::uint32_t     movingRight: 1;       // 0:02 : 0x0004
+			std::uint32_t     movingLeft: 1;        // 0:03 : 0x0008
+			std::uint32_t     unk04: 2;             // 0:04 : 0x0010 and 0x0020
+			std::uint32_t     walking: 1;           // 0:06 : 0x0040
+			std::uint32_t     running: 1;           // 0:07 : 0x0080
+			std::uint32_t     sprinting: 1;         // 0:08 : 0x0100
+			std::uint32_t     sneaking: 1;          // 0:09 : 0x0200
+			std::uint32_t     swimming: 1;          // 0:10 : 0x0400
 			std::uint32_t     unk11: 3;             // 0:11
 			SIT_SLEEP_STATE   sitSleepState: 4;     // 0:14
 			FLY_STATE         flyState: 3;          // 0:18
