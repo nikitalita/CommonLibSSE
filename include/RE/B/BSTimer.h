@@ -12,8 +12,8 @@ namespace RE
 		}
 
 		// members
-		std::uint64_t unk00;                          // 00
-		std::uint32_t lastPerformanceCount;           // 08
+		std::uint64_t pad00;                          // 00
+		std::uint64_t lastPerformanceCount;           // 08
 		float         clamp;                          // 10
 		float         clampRemainder;                 // 14
 		float         delta;                          // 18
